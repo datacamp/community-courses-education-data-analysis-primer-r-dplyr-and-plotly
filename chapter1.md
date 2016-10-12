@@ -118,20 +118,21 @@ success_msg("This was easy. Let's get some serious work done.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:97ba0a444c
-## The Bar Chart
+## The Interactive Bar Chart
 
 You've likely encountered a bar chart before. With plotly you can now turn your basic bar charts into interactive masterpieces!
 
-You will work again with the `diamonds` dataset. The goal is to create a bar chart that buckets our diamonds based on quality of the `cut`. Next, for each cut, we want to see how many diamonds there are of each `clarity`.  
+You will work again with the `diamonds` dataset. The goal is to create a bar chart that buckets our diamonds based on quality of the `cut`. Next, for each cut, we want to see how many diamonds there are for each `clarity`.  
 
 Exciting!
 
 *** =instructions
-- Calculate the number of diamonds for each cut<->clarity combination. Do this using the `count` function in the [`dplyr`](https://www.rdocumentation.org/packages/dplyr/versions/0.5.0) package and assign the result to `diamonds_bucket`. Plotly and dplyr are already loaded in. 
+- Calculate the number of diamonds for each cut<->clarity combination. Do this using the `count` function in the [`dplyr`](https://www.rdocumentation.org/packages/dplyr/versions/0.5.0) package and assign the result to `diamonds_bucket`. 
 - Next, create a chart of type "bar". The color should dependent on the clarity of the diamond while the x-axis should bucket your diamonds by the cut. 
+- Plotly and dplyr are already loaded in. 
 
 *** =hint
-- You can calculate the numbers of diamonds for each cut<->clarity using `count(cut, clarity)`. (Not familiar with dplyr? Check [our course](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial).
+- You can calculate the numbers of diamonds for each cut<->clarity using `count(cut, clarity)`. (Not familiar with dplyr? Check [our course](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial)).
 - Indicate you want a bar chart in plotly using `type= "bar"`
 
 *** =pre_exercise_code
