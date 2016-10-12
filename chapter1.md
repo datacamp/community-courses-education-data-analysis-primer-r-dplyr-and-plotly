@@ -1,116 +1,118 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
-attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
+title       : Getting Started With Plotly
+description : This chapter will introduce you to plotly and how you can use R and plotly together to create stunning data visualizations
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:0d48ca8628
-## A really bad movie
+--- type:NormalExercise lang:r xp:100 skills:1 key:7dc7c83d61
+## Let's get started
 
-Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
+[Plotly](https://plot.ly/) allows anyone to make beautiful, interactive web-based graphs. 
+
+In this short tutorial, you'll be introduced to the [R package for plotly](https://www.rdocumentation.org/packages/plotly/versions/4.5.2?), a high-level interface to the open source JavaScript graphing library plotly.js. Plotly for R runs locally in your web browser or in the R Studio viewer. You can publish your charts to the web with [plotly's web service](https://plot.ly/r/getting-started).
+
+Let's get started by loading the `plotly` library. 
 
 *** =instructions
-- Adventure
-- Action
-- Animation
-- Comedy
+- Load the `plotly` library
+- Click Submit Answer to run the code
 
 *** =hint
-Have a look at the plot. Which color does the point with the lowest rating have?
+- Use the `library()` function to load the plotly R package
 
 *** =pre_exercise_code
 ```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
 
-movies <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
-
-library(ggplot2)
-
-ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
-```
-
-*** =sct
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-msg_bad <- "That is not correct!"
-msg_success <- "Exactly! There seems to be a very bad action movie in the dataset."
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
-```
-
---- type:NormalExercise lang:r xp:100 skills:1 key:bb2e4acace
-## More movies
-
-In the previous exercise, you saw a dataset about movies. In this exercise, we'll have a look at yet another dataset about movies!
-
-A dataset with a selection of movies, `movie_selection`, is available in the workspace.
-
-*** =instructions
-- Check out the structure of `movie_selection`.
-- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
-- Use `plot()` to  plot `good_movies$Run` on the x-axis, `good_movies$Rating` on the y-axis and set `col` to `good_movies$Genre`.
-
-*** =hint
-- Use `str()` for the first instruction.
-- For the second instruction, you should use `...[movie_selection$Rating >= 5, ]`.
-- For the plot, use `plot(x = ..., y = ..., col = ...)`.
-
-*** =pre_exercise_code
-```{r}
-# You can also prepare your dataset in a specific way in the pre exercise code
-
-library(MindOnStats)
-data(Movies)
-movie_selection <- Movies[Movies$Genre %in% c("action", "animated", "comedy"),c("Genre", "Rating", "Run")]
-
-# Clean up the environment
-rm(Movies)
 ```
 
 *** =sample_code
 ```{r}
-# movie_selection is available in your workspace
-
-# Check out the structure of movie_selection
+# load the `plotly` library
 
 
-# Select movies that have a rating of 5 or higher: good_movies
-
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
+# This will create your very first plotly visualization
+plot_ly(z = ~volcano)
 
 ```
 
 *** =solution
 ```{r}
-# movie_selection is available in your workspace
+# load the `plotly` library
+library(plotly)
 
-# Check out the structure of movie_selection
-str(movie_selection)
+# This will create your very first plotly visualization
+plot_ly(z = ~volcano)
 
-# Select movies that have a rating of 5 or higher: good_movies
-good_movies <- movie_selection[movie_selection$Rating >= 5, ]
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
-plot(good_movies$Run, good_movies$Rating, col = good_movies$Genre)
 ```
 
 *** =sct
 ```{r}
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-test_function("str", args = "object",
-              not_called_msg = "You didn't call `str()`!",
-              incorrect_msg = "You didn't call `str(object = ...)` with the correct argument, `object`.")
-
-test_object("good_movies")
-
-test_function("plot", args = "x")
-test_function("plot", args = "y")
-test_function("plot", args = "col")
+test_function("library", args = "x")
 
 test_error()
 
-success_msg("Good work!")
+success_msg("This was easy. Let's get some serious work done.")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:804e39053c
+## Let's get started
+
+We'll use several datasets throughout the tutorial to showcase the power of plotly. In the next exercises we will make use of the `diamond` dataset, a dataset containing the prices and other attributes of 1000 diamonds. You're encouraged to think about how the examples can be applied to your own data-sets!
+
+Plotly graphs are interactive. So make sure to experiment a bit with your plot: click-drag to zoom, shift-click to pan, double-click to autoscale.
+
+*** =instructions
+- plotly has already been loaded for you. Take a look at the first command. It plots the carat (weight of the diamond) against the price (in US dollars). You don't have to change anything about this command.
+- In the second call of plot.ly() change the color argument in aes() (which stands for aesthetics). The color should be dependent on the weight of the diamond.
+- In the third call of plot.ly() change the size argument in aes() (which stands for aesthetics). The size should be dependent on the weight of the diamond.
+
+*** =hint
+- The second argument of the second plot.ly() should contain argument color set to carat. 
+
+*** =pre_exercise_code
+```{r}
+library(plotly)
+library(ggplot2)
+diamonds <- diamonds[sample(nrow(diamonds), 1000), ]
+```
+
+*** =sample_code
+```{r}
+# The diamonds data set
+str(diamonds)
+
+# A firs scatterplot has been made for you
+plot_ly(diamonds, x = ~carat, y = ~price)
+
+# Replace ___ with the correct vector
+plot_ly(diamonds, x = ~carat, y = ~price, color = ~___)
+        
+# Replace ___ with the correct vector
+plot_ly(diamonds, x = ~carat, y = ~price, color = ~___,
+        size = ~___)
+```
+
+*** =solution
+```{r}
+# The diamonds data set
+str(diamonds)
+
+# A firs scatterplot has been made for you
+plot_ly(diamonds, x = ~carat, y = ~price)
+
+# Replace ___ with the correct vector
+plot_ly(diamonds, x = ~carat, y = ~price, color = ~carat)
+        
+# Replace ___ with the correct vector
+plot_ly(diamonds, x = ~carat, y = ~price, color = ~carat,
+        size = ~carat)
+```
+
+*** =sct
+```{r}
+# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+test_function("library", args = "x")
+
+test_error()
+
+success_msg("This was easy. Let's get some serious work done.")
 ```
