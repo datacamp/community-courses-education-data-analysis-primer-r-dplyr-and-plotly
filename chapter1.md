@@ -118,14 +118,19 @@ success_msg("This was easy. Let's get some serious work done.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:97ba0a444c
-## The Single Bar Chart
+## The Bar Chart
+
+You've likely encountered a bar chart before. With plotly you can now turn your basic bar charts into interactive masterpieces!
+
+You will work again with the `diamonds` dataset. 
+
+In the following instructions, you'll start by creating a plotly object from the diamonds dataset. 
 
 
 
+ggplot2::diamonds %>% count(cut, clarity) %>%
+  plot_ly(x = ~cut, y = ~n, color = ~clarity)
 
-We'll use several datasets throughout the tutorial to showcase the power of plotly. In the next exercises we will make use of the `diamond` dataset, a dataset containing the prices and other attributes of 1000 diamonds. You're encouraged to think about how the examples can be applied to your own data-sets!
-
-Plotly graphs are interactive. So make sure to experiment a bit with your plot: click-drag to zoom, shift-click to pan, double-click to autoscale.
 
 *** =instructions
 - plotly has already been loaded for you. Take a look at the first command. It plots the carat (weight of the diamond) against the price (in US dollars). You don't have to change anything about this command.
