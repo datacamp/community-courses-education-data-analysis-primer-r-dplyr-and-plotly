@@ -126,73 +126,42 @@ You will work again with the `diamonds` dataset. The goal is to create a bar cha
 
 Exciting!
 
-cut. quality of the cut (Fair, Good, Very Good, Premium, Ideal)
-colour. diamond colour, from J (worst) to D (best)
-clarity. a measurement of how clear the diamond is
-
-
-Mapping a Color Variable 
-
-In the following instructions, you'll start by creating a plotly object from the diamonds dataset. 
-
-
-
-
-
-ggplot2::diamonds %>% count(cut, clarity) %>%
-  plot_ly(x = ~cut, y = ~n, color = ~clarity)
-
-
 *** =instructions
-- First you need to calculate the number of diamonds for each cut <> clarity combination. Do this and assign the result to `diamonds_bucket`. 
-- Next, 
-- plotly has already been loaded for you. 
-
-
-- Take a look at the first command. It plots the carat (weight of the diamond) against the price (in US dollars). You don't have to change anything about this command.
-- In the second call of plot.ly() change the color argument in aes() (which stands for aesthetics). The color should be dependent on the weight of the diamond.
-- In the third call of plot.ly() change the size argument in aes() (which stands for aesthetics). The size should be dependent on the weight of the diamond.
+- Calculate the number of diamonds for each cut<->clarity combination. Do this using the `count` function in the [`dplyr`](https://www.rdocumentation.org/packages/dplyr/versions/0.5.0) package and assign the result to `diamonds_bucket`. Plotly and dplyr are already loaded in. 
+- Next, create a chart of type "bar". The color should dependent on the clarity of the diamond while the x-axis should bucket your diamonds by the cut. 
 
 *** =hint
-- The second argument of the second plot.ly() should contain argument `color` set to `carat`. 
+- You can calculate the numbers of diamonds for each cut<->clarity using `count(cut, clarity)`. (Not familiar with dplyr? Check [our course](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial).
+- Indicate you want a bar chart in plotly using `type= "bar"`
 
 *** =pre_exercise_code
 ```{r}
 library(plotly)
 library(ggplot2)
+library(dplyr)
 diamonds <- diamonds[sample(nrow(diamonds), 1000), ]
 ```
 
 *** =sample_code
 ```{r}
-# The diamonds data set
-str(diamonds)
 
-# A firs scatterplot has been made for you
-plot_ly(diamonds, x = ~carat, y = ~price)
+# Calculate the numbers of diamonds for each cut<->clarity combination
+diamonds_bucket <- diamonds %>% count(___, ___)
 
 # Replace ___ with the correct vector
-plot_ly(diamonds, x = ~carat, y = ~price, color = ~___)
-        
-# Replace ___ with the correct vector
-plot_ly(diamonds, x = ~carat, y = ~price, color = ~___,
-        size = ~___)
+plot_ly(diamonds_bucket, x = ___, y = ~n, type= ___, color = ___) 
+
 ```
 
 *** =solution
 ```{r}
-# The diamonds data set
-str(diamonds)
 
-# A firs scatterplot has been made for you
-diamonds %>% count(cut, clarity)
+# Calculate the numbers of diamonds for each cut<->clarity combination
+diamonds_bucket <- diamonds %>% count(cut, clarity)
 
 # Replace ___ with the correct vector
-plot_ly(diamonds, x = ~carat, y = ~price, color = ~carat)
-        
-# Replace ___ with the correct vector
-plot_ly(diamonds, x = ~carat, y = ~price, color = ~carat,
-        size = ~carat)
+plot_ly(diamonds_bucket, x = ~cut, y = ~n, type= "bar", color = ~clarity) 
+
 ```
 
 *** =sct
