@@ -122,9 +122,20 @@ success_msg("This was easy. Let's get some serious work done.")
 
 You've likely encountered a bar chart before. With plotly you can now turn your basic bar charts into interactive masterpieces!
 
-You will work again with the `diamonds` dataset. 
+You will work again with the `diamonds` dataset. The goal is to create a bar chart that buckets our diamonds based on quality of the `cut`. Next, for each cut, we want to see how many diamonds there are of each `clarity`.  
+
+Exciting!
+
+cut. quality of the cut (Fair, Good, Very Good, Premium, Ideal)
+colour. diamond colour, from J (worst) to D (best)
+clarity. a measurement of how clear the diamond is
+
+
+Mapping a Color Variable 
 
 In the following instructions, you'll start by creating a plotly object from the diamonds dataset. 
+
+
 
 
 
@@ -133,7 +144,12 @@ ggplot2::diamonds %>% count(cut, clarity) %>%
 
 
 *** =instructions
-- plotly has already been loaded for you. Take a look at the first command. It plots the carat (weight of the diamond) against the price (in US dollars). You don't have to change anything about this command.
+- First you need to calculate the number of diamonds for each cut <> clarity combination. Do this and assign the result to `diamonds_bucket`. 
+- Next, 
+- plotly has already been loaded for you. 
+
+
+- Take a look at the first command. It plots the carat (weight of the diamond) against the price (in US dollars). You don't have to change anything about this command.
 - In the second call of plot.ly() change the color argument in aes() (which stands for aesthetics). The color should be dependent on the weight of the diamond.
 - In the third call of plot.ly() change the size argument in aes() (which stands for aesthetics). The size should be dependent on the weight of the diamond.
 
@@ -169,7 +185,7 @@ plot_ly(diamonds, x = ~carat, y = ~price, color = ~___,
 str(diamonds)
 
 # A firs scatterplot has been made for you
-plot_ly(diamonds, x = ~carat, y = ~price)
+diamonds %>% count(cut, clarity)
 
 # Replace ___ with the correct vector
 plot_ly(diamonds, x = ~carat, y = ~price, color = ~carat)
