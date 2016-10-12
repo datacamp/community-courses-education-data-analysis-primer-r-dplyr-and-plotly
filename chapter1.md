@@ -174,3 +174,68 @@ test_error()
 
 success_msg("This was easy. Let's get some serious work done.")
 ```
+--- type:NormalExercise lang:r xp:100 skills:1 key:126082cf3d
+## The Interactive Box Plot
+
+In the final exercise of this chapter you will make an interactive box plot in R. Using plotly, you can create box plots that are grouped, colored, and that display the underlying data distribution.
+
+The code to create a simple box plot with plotly is provided in the code on your right. Note how you use `type= "box"` in the function `plot_ly` to create a box plot. Make sure to run the code. 
+ 
+
+Exciting!
+
+*** =instructions
+- Create a second, more fancy, box plot using `diamonds`. The y-axis should represent the `price`. The color should depend on the `cut`.
+- Create a third box plot where you bucket the diamonds not only by `cut` but also by `clarity`. The color should depend on the `clarity` of the diamond.  
+- Plotly is already loaded in. 
+
+*** =hint
+- For the third box plot the `x` argument should depend on the `cut`.
+
+*** =pre_exercise_code
+```{r}
+library(plotly)
+library(ggplot2)
+library(dplyr)
+diamonds <- diamonds[sample(nrow(diamonds), 1000), ]
+```
+
+*** =sample_code
+```{r}
+
+# The Non Fancy Box Plot
+plot_ly(y = ~rnorm(50), type = "box")
+
+# The Fancy Box Plot
+plot_ly(diamonds, y = ___, color = ___, type = ___)
+
+# The Super Fancy Box Plot
+plot_ly(diamonds, x = ___, y = ___, color = ___, type = ___) %>%
+  layout(boxmode = "group")
+  
+```
+
+*** =solution
+```{r}
+
+# The Non Fancy Box Plot
+plot_ly(y = ~rnorm(50), type = "box")
+
+# The Fancy Box Plot
+plot_ly(diamonds, y = ~price, color = ~cut, type = "box")
+
+# The Super Fancy Box Plot
+plot_ly(diamonds, x = ~cut, y = ~price, color = ~clarity, type = "box") %>%
+  layout(boxmode = "group")
+  
+```
+
+*** =sct
+```{r}
+# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+test_function("library", args = "x")
+
+test_error()
+
+success_msg("This was easy. Let's get some serious work done.")
+```
