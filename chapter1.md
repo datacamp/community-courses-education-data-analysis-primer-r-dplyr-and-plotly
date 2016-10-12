@@ -118,7 +118,7 @@ success_msg("This was easy. Let's get some serious work done.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:97ba0a444c
-## The Interactive Bar Chart
+## The interactive bar chart
 
 You've likely encountered a bar chart before. With plotly you can now turn your basic bar charts into interactive masterpieces!
 
@@ -175,15 +175,12 @@ test_error()
 success_msg("This was easy. Let's get some serious work done.")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:126082cf3d
-## The Interactive Box Plot
+## The interactive box plot
 
 In the final exercise of this chapter you will make an interactive box plot in R. Using plotly, you can create box plots that are grouped, colored, and that display the underlying data distribution.
 
-The code to create a simple box plot with plotly is provided in the code on your right. Note how you use `type= "box"` in the function `plot_ly` to create a box plot. Make sure to run the code. 
+The code to create a simple box plot with plotly is provided in the code on your right. Note how you use `type= "box"` in the function `plot_ly()` to create a box plot. Make sure to run the code. 
  
-
-Exciting!
-
 *** =instructions
 - Create a second, more fancy, box plot using `diamonds`. The y-axis should represent the `price`. The color should depend on the `cut`.
 - Create a third box plot where you bucket the diamonds not only by `cut` but also by `clarity`. The color should depend on the `clarity` of the diamond.  
