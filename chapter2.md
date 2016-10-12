@@ -81,12 +81,13 @@ Not yet familiar with the ggplot2 syntax? [Consider taking this interactive tuto
 
 *** =instructions
 The `mtcars` data frame is available in your workspace. Use `geom_point()` for your plot:
+
 - Using ggplot2, map wt onto the x aesthetic, mpg onto the y aesthetic, and cyl onto color. 
 - Use `ggplotly()` to make your plot interactive 
 
 
 *** =hint
-- Remember: for both plots you need to specify the z argument.
+- Thanks to plotly you can make your graph interactive with one simple function.
 
 *** =pre_exercise_code
 ```{r}
