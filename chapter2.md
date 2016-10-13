@@ -211,3 +211,79 @@ test_error()
 
 success_msg("This was easy. Let's get some serious work done.")
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:8e8d273075
+## Building a choropleth map
+
+For the final exercise in this course you will implement a range slider to a stock graph.
+
+
+
+
+
+*** =instructions
+- Based on the US Agriculture Exports choropleth map code, create a choropleth map showing the 2014 global GDP (`world_gdp_2014`) for each country. The data is stored in `world_gdp_2014`. 
+- For a map of the world, the locationmode is `"g"`.
+
+*** =hint
+- The code for `locations` is `locations = world_gdp_2014$CODE`
+
+*** =pre_exercise_code
+```{r}
+library(choroplethr)
+library(ggplot2)
+library(dplyr)
+us_ag_exports = read.csv('http://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
+us_ag_exports = us_ag_exports[,c(1,4)]
+
+world_gdp_2014 = read.csv('http://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
+world_gdp_2014 = world_gdp_2014[,2:3]
+
+```
+
+*** =sample_code
+```{r}
+
+# US Agriculture Exports
+plot_ly(type="choropleth",locations = us_ag_exports$code, locationmode="USA-states",
+        color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% 
+  layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State") %>% colorbar(title="Millions USD")
+
+# 2014 global GDP
+str(world_gdp_2014)
+
+# 2014 Global GDP
+plot_ly(___,___, ____,
+        color = world_gdp_2014$GDP..BILLIONS, colors = 'Blues', ___) %>% 
+  ___(___ = "2014 Global GDP") %>% ___(___ = "GDP Billions US$")
+  
+```
+
+*** =solution
+```{r}
+
+# US Agriculture Exports
+plot_ly(type="choropleth",locations = us_ag_exports$code, locationmode="USA-states",
+        color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% 
+  layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State") %>% colorbar(title="Millions USD")
+
+
+# 2014 global GDP
+str(world_gdp_2014)
+
+# 2014 Global GDP
+plot_ly(type="choropleth",locations = world_gdp_2014$CODE, locationmode="g",
+        color = world_gdp_2014$GDP..BILLIONS, colors = 'Blues', z = world_gdp_2014$GDP..BILLIONS) %>% 
+  layout(title = "2014 Global GDP") %>% colorbar(title="GDP Billions US$")
+
+```
+
+*** =sct
+```{r}
+# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+test_function("library", args = "x")
+
+test_error()
+
+success_msg("This was easy. Let's get some serious work done.")
+```
