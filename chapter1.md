@@ -59,17 +59,18 @@ We'll use several datasets throughout the tutorial to showcase the power of plot
 
 <center><img src="http://www.picgifs.com/glitter-gifs/d/diamonds/animaatjes-diamonds-61528.gif" alt="Diamonds" style="width:10px;height:10px"></center>
 
-Don't forget! 
+Don't forget: 
 
 You're encouraged to think about how the examples can be applied to your own data-sets! Also, Plotly graphs are interactive. So make sure to experiment a bit with your plot: click-drag to zoom, shift-click to pan, double-click to autoscale.
 
 *** =instructions
-- plotly has already been loaded for you. Take a look at the first command. It plots the carat (weight of the diamond) against the price (in US dollars). You don't have to change anything about this command.
-- In the second call of plot.ly() change the color argument in aes() (which stands for aesthetics). The color should be dependent on the weight of the diamond.
-- In the third call of plot.ly() change the size argument in aes() (which stands for aesthetics). The size should be dependent on the weight of the diamond.
+- `plotly` has already been loaded for you. 
+- Take a look at the first command. It plots the `carat` (weight of the diamond) against the `price` (in US dollars). You don't have to change anything about this command.
+- In the second call of `plot.ly()` change the `color` argument in `aes()` (which stands for aesthetics). The color should be dependent on the weight of the diamond.
+- In the third call of `plot.ly()` change the `size` argument in `aes()` (which stands for aesthetics). The size should be dependent on the weight of the diamond.
 
 *** =hint
-- The second argument of the second plot.ly() should contain argument `color` set to `carat`. 
+- The second argument of the second `plot.ly()` should contain argument `color` set to `carat`. 
 
 *** =pre_exercise_code
 ```{r}
@@ -119,19 +120,19 @@ success_msg("This was easy. Let's get some serious work done.")
 --- type:NormalExercise lang:r xp:100 skills:1 key:97ba0a444c
 ## The interactive bar chart
 
-You've likely encountered a bar chart before. With plotly you can now turn your basic bar charts into interactive masterpieces!
+You've likely encountered a bar chart before. With plotly you can now turn those dull, basic bar charts into interactive masterpieces!
 
 You will work again with the `diamonds` dataset. The goal is to create a bar chart that buckets our diamonds based on quality of the `cut`. Next, for each cut, we want to see how many diamonds there are for each `clarity`.  
 
 Exciting!
 
 *** =instructions
-- Calculate the number of diamonds for each cut<->clarity combination. Do this using the `count` function in the [`dplyr`](https://www.rdocumentation.org/packages/dplyr/versions/0.5.0) package and assign the result to `diamonds_bucket`. 
-- Next, create a chart of type "bar". The color should dependent on the clarity of the diamond while the x-axis should bucket your diamonds by the cut. 
-- Plotly and dplyr are already loaded in. 
+- Calculate the number of diamonds for each cut/clarity combination using `count` ([`dplyr`](https://www.rdocumentation.org/packages/dplyr/versions/0.5.0)). Assign the result to `diamonds_bucket`. 
+- Create a chart of type `"bar"`. The `color` of the bar dependents on the `clarity` of the diamond. Bucket your diamonds by the `cut` over the x-axis. 
+- `plotly` and `dplyr` are already loaded in. 
 
 *** =hint
-- You can calculate the numbers of diamonds for each cut<->clarity using `count(cut, clarity)`. (Not familiar with dplyr? Check [our course](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial)).
+- Calculate the numbers of diamonds for each cut/clarity using `count(cut, clarity)`. (Not familiar with dplyr? Check [our course](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial)).
 - Indicate you want a bar chart in plotly using `type= "bar"`
 
 *** =pre_exercise_code
@@ -167,23 +168,21 @@ plot_ly(diamonds_bucket, x = ~cut, y = ~n, type= "bar", color = ~clarity)
 *** =sct
 ```{r}
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-test_function("library", args = "x")
-
-test_error()
-
 success_msg("This was easy. Let's get some serious work done.")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:126082cf3d
-## The interactive box plot
+## From the bar to the box: the box plot
 
-In the final exercise of this chapter you will make an interactive box plot in R. Using plotly, you can create box plots that are grouped, colored, and that display the underlying data distribution.
+In the final exercise of this chapter you will make an interactive box plot in R. 
 
-The code to create a simple box plot with plotly is provided in the code on your right. Note how you use `type= "box"` in the function `plot_ly()` to create a box plot. Make sure to run the code. 
+Using plotly, you can create box plots that are grouped, colored, and that display the underlying data distribution. The code to create a simple box plot using plotly is provided on your right. Note how you use `type= "box"` in the function `plot_ly()` to create a box plot. 
+
+Make sure to run the code. 
  
 *** =instructions
 - Create a second, more fancy, box plot using `diamonds`. The y-axis should represent the `price`. The color should depend on the `cut`.
 - Create a third box plot where you bucket the diamonds not only by `cut` but also by `clarity`. The color should depend on the `clarity` of the diamond.  
-- Plotly is already loaded in. 
+- `plotly` is already loaded in. 
 
 *** =hint
 - For the third box plot the `x` argument should depend on the `cut`.
@@ -229,9 +228,5 @@ plot_ly(diamonds, x = ~cut, y = ~price, color = ~clarity, type = "box") %>%
 *** =sct
 ```{r}
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-test_function("library", args = "x")
-
-test_error()
-
 success_msg("This was easy. Let's get some serious work done.")
 ```
