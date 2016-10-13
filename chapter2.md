@@ -215,15 +215,16 @@ success_msg("This was easy. Let's get some serious work done.")
 --- type:NormalExercise lang:r xp:100 skills:1 key:8e8d273075
 ## Building a choropleth map
 
-For the final exercise in this course you will implement a range slider to a stock graph. We gave you an example of how to add a range slider to a plot by looking at a time series `USAccDeaths` that gives the monthly totals of accidental deaths in the USA.
+For the final exercise in this course you will implement a range slider to a stock graph. We gave you an example of how to add a range slider to a plot by looking at a time series `USAccDeaths` that gives the monthly totals of accidental deaths in the USA. Make sure to run the code. 
 
+Loaded in, you will find a data set on Apple's stock price: `apple_stock_price`. Let's visualize this stock price over time using an interactive plot_ly chart. Make sure to add a range slider.  
 
 *** =instructions
-- Based on the US Agriculture Exports choropleth map code, create a choropleth map showing the 2014 global GDP (`world_gdp_2014`) for each country. The data is stored in `world_gdp_2014`. 
-- For a map of the world, the locationmode is `"g"`.
+- Chart Apple's time-series data in R using `apple_stock_price` and based on the provided sample code.
+- Make sure to add a range slider
 
 *** =hint
-- The code for `locations` is `locations = world_gdp_2014$CODE`
+- Not sure how to add a range slider? Type `?rangeslider` in the console. 
 
 *** =pre_exercise_code
 ```{r}
