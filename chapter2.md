@@ -1,11 +1,15 @@
 ---
 title       : Getting Fancy With Plotly
-description : In this chapter we will bring your plotly skills to the next level. Here you will learn how to use plotly to create heatmaps and 3D surface plots, a choropleth map and we introduce you to ggplotly, the interactive sister of ggplot2. 
+description : In this chapter we will bring your plotly skills to the next level. Learn how to use plotly to create heatmaps and 3D surface plots, a choropleth map, and how to add slides. There is even a short meet and greet with ggplotly, the interactive sister of ggplot2. 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:7dc7c83d61
 ## Visualizing volcano data
 
 Mount Eden is a volcano in the Auckland volcanic field. The `volcano` dataset gives topographic information for Mount Eden on a 10m by 10m grid. Run `str(volcano)` to examine the dataset. 
+
+<center><img src="http://lh6.ggpht.com/-ONlugp32B3o/VHwNdsi3EcI/AAAAAAAA9dI/b9DWnqncHFA/mount-wellington%25255B5%25255D.jpg?imgmax=800"style>
+
+
 
 One way to look at this data is by using a heatmap. The heatmap's color pattern then visualizes how the height of the volcano's surface fluctuates within this 10m by 10m grid. 
 
