@@ -130,3 +130,69 @@ test_error()
 
 success_msg("This was easy. Let's get some serious work done.")
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:dc9f2c11f7
+## Building a choropleth map
+
+Ever wonder how some data scientists make these beautiful geographical maps? You will make one yourself in this chapter.
+
+A choropleth map provides an easy way to visualize how a measurement varies across a geographic area or it shows the level of variability within a region.
+
+
+
+
+
+Let's start with a choropleth map using the states and state_values objects available in the console. The `ploy_ly()` function is already partially filled in in the script to the right. Follow the instructions to fill in the arguments appropriately.
+
+
+*** =instructions
+The `mtcars` data frame is available in your workspace. Use `geom_point()` for your plot:
+
+- Using ggplot2, map wt onto the x aesthetic, mpg onto the y aesthetic, and cyl onto color. 
+- Use `ggplotly()` to make your plot interactive 
+
+
+*** =hint
+- Thanks to plotly you can make your graph interactive with one simple function.
+
+*** =pre_exercise_code
+```{r}
+library(plotly)
+library(ggplot2)
+diamonds <- diamonds[sample(nrow(diamonds), 1000), ]
+
+```
+
+*** =sample_code
+```{r}
+
+# Create the ggplot2 graph
+ggplot(___, aes(x = ___, y = ___, col = ___)) +
+  geom_point()
+
+# Make your plot interactive
+
+
+```
+
+*** =solution
+```{r}
+
+# Create the ggplot2 graph
+ggplot(mtcars, aes(x = wt, y = mpg, col = cyl)) +
+  geom_point()
+
+# Make your plot interactive
+ggplotly()
+
+```
+
+*** =sct
+```{r}
+# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+test_function("library", args = "x")
+
+test_error()
+
+success_msg("This was easy. Let's get some serious work done.")
+```
