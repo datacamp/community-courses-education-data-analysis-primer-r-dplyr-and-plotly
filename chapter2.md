@@ -143,7 +143,8 @@ A choropleth map provides an easy way to visualize how a measurement varies acro
 
 
 *** =instructions
-- Based on the US Agriculture Exports choropleth map code, now create a choropleth map showing the 2014 global GDP (`world_gdp_2014`) for each country. The data is stored in `world_gdp_2014`:
+- Based on the US Agriculture Exports choropleth map code, now create a choropleth map showing the 2014 global GDP (`world_gdp_2014`) for each country. The data is stored in `world_gdp_2014`. 
+- For a map of the world, the locationmode is `"g"`.
 
 *** =hint
 - Thanks to plotly you can make your graph interactive with one simple function.
