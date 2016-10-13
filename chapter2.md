@@ -136,28 +136,31 @@ success_msg("This was easy. Let's get some serious work done.")
 
 Ever wonder how some data scientists make these beautiful geographical maps? In this exercise we will show you how you can make one yourself.
 
-A choropleth map provides an easy way to visualize how a measurement varies across a geographic area or it shows the level of variability within a region. In the editor on the right you can see an example of such an interactive choropleth map created using plotly. If you run the code you will see the 2011 US Agriculture Exports by State. Make sure to hover over each state to see the export value per state in Millions USD. Let's highlight the most important pieces in the code:
+A choropleth map provides an easy way to visualize how a measurement varies across a geographic area or it shows the level of variability within a region. In the editor on the right you can see an example of such an interactive choropleth map created using plotly. If you run the code you will see the 2011 US Agriculture Exports by State. Make sure to hover over each state to see the export value per state in Millions USD. 
 
-- The `locations` argument sets the geographic locations corresponding to each value in `z`.  `locationmode` determines the set of locations used to match entries in `locations` to regions on the map. In this case `USA-states`.
+Let's highlight the most important pieces in the code:
+
+- The `locations` argument sets the geographic locations corresponding to each value in `z`.  
+- `locationmode` determines the set of locations used to match entries in `locations` to regions on the map. In this case `USA-states`.
 - In `layout()` you modify the layout of a plotly visualization. With e.g. `geo` you tell plotly to only show the `usa` map (remove `geo` and you will have a map of the world). 
 
 
 *** =instructions
-- Based on the US Agriculture Exports choropleth map code, now create a choropleth map showing the 2014 global GDP (`world_gdp_2014`) for each country. The data is stored in `world_gdp_2014`. 
+- Based on the US Agriculture Exports choropleth map code, create a choropleth map showing the 2014 global GDP (`world_gdp_2014`) for each country. The data is stored in `world_gdp_2014`. 
 - For a map of the world, the locationmode is `"g"`.
 
 *** =hint
-- Thanks to plotly you can make your graph interactive with one simple function.
+- The code for `locations` is `locations = world_gdp_2014$CODE`
 
 *** =pre_exercise_code
 ```{r}
 library(choroplethr)
 library(ggplot2)
 library(dplyr)
-us_ag_exports = read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
+us_ag_exports = read.csv('http://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
 us_ag_exports = us_ag_exports[,c(1,4)]
 
-world_gdp_2014 = read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
+world_gdp_2014 = read.csv('http://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
 world_gdp_2014 = world_gdp_2014[,2:3]
 
 ```
@@ -169,7 +172,6 @@ world_gdp_2014 = world_gdp_2014[,2:3]
 plot_ly(type="choropleth",locations = us_ag_exports$code, locationmode="USA-states",
         color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% 
   layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State") %>% colorbar(title="Millions USD")
-
 
 # 2014 global GDP
 str(world_gdp_2014)
