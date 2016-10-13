@@ -215,10 +215,7 @@ success_msg("This was easy. Let's get some serious work done.")
 --- type:NormalExercise lang:r xp:100 skills:1 key:8e8d273075
 ## Building a choropleth map
 
-For the final exercise in this course you will implement a range slider to a stock graph.
-
-
-
+For the final exercise in this course you will implement a range slider to a stock graph. We gave you an example of how to add a range slider to a plot by looking at a time series `USAccDeaths` that gives the monthly totals of accidental deaths in the USA.
 
 
 *** =instructions
@@ -230,51 +227,57 @@ For the final exercise in this course you will implement a range slider to a sto
 
 *** =pre_exercise_code
 ```{r}
-library(choroplethr)
-library(ggplot2)
-library(dplyr)
-us_ag_exports = read.csv('http://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
-us_ag_exports = us_ag_exports[,c(1,4)]
+library(plotly)
+library(quantmod)
 
-world_gdp_2014 = read.csv('http://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
-world_gdp_2014 = world_gdp_2014[,2:3]
+getSymbols(Symbols = c("AAPL"))
+apple_stock_price <- data.frame(Date = index(AAPL), AAPL[,6])
 
 ```
 
 *** =sample_code
 ```{r}
 
-# US Agriculture Exports
-plot_ly(type="choropleth",locations = us_ag_exports$code, locationmode="USA-states",
-        color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% 
-  layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State") %>% colorbar(title="Millions USD")
+# Monthly totals of accidental deaths in the USA
+plot_ly(x = time(USAccDeaths), y = USAccDeaths) %>% 
+  add_lines() %>%
+  rangeslider()
 
-# 2014 global GDP
-str(world_gdp_2014)
+# Apple Stock Price
+str(apple_stock_price)
 
-# 2014 Global GDP
-plot_ly(___,___, ____,
-        color = world_gdp_2014$GDP..BILLIONS, colors = 'Blues', ___) %>% 
-  ___(___ = "2014 Global GDP") %>% ___(___ = "GDP Billions US$")
-  
+
+# Apple Stock Price With Rangeslider
+plot_ly(___, x = ~___) %>%
+  add_lines(y = ~___, name = "Apple") %>% 
+  ___ %>% 
+  layout(
+    title = "Stock Price Apple",
+    xaxis = list(title = "Date"),
+    yaxis = list(title = "Price"))
+    
 ```
 
 *** =solution
 ```{r}
 
-# US Agriculture Exports
-plot_ly(type="choropleth",locations = us_ag_exports$code, locationmode="USA-states",
-        color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% 
-  layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State") %>% colorbar(title="Millions USD")
+# Monthly totals of accidental deaths in the USA
+plot_ly(x = time(USAccDeaths), y = USAccDeaths) %>% 
+  add_lines() %>%
+  rangeslider()
+
+# Apple Stock Price
+str(apple_stock_price)
 
 
-# 2014 global GDP
-str(world_gdp_2014)
-
-# 2014 Global GDP
-plot_ly(type="choropleth",locations = world_gdp_2014$CODE, locationmode="g",
-        color = world_gdp_2014$GDP..BILLIONS, colors = 'Blues', z = world_gdp_2014$GDP..BILLIONS) %>% 
-  layout(title = "2014 Global GDP") %>% colorbar(title="GDP Billions US$")
+# Apple Stock Price With Rangeslider
+plot_ly(apple_stock_price, x = ~Date) %>%
+  add_lines(y = ~AAPL.Adjusted, name = "Apple") %>% 
+  rangeslider() %>% 
+  layout(
+    title = "Stock Price Apple",
+    xaxis = list(title = "Date"),
+    yaxis = list(title = "Price"))
 
 ```
 
