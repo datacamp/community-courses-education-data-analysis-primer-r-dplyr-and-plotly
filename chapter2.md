@@ -134,56 +134,68 @@ success_msg("This was easy. Let's get some serious work done.")
 --- type:NormalExercise lang:r xp:100 skills:1 key:dc9f2c11f7
 ## Building a choropleth map
 
-Ever wonder how some data scientists make these beautiful geographical maps? You will make one yourself in this chapter.
+Ever wonder how some data scientists make these beautiful geographical maps? In this exercise we will show you how you can make one yourself.
 
-A choropleth map provides an easy way to visualize how a measurement varies across a geographic area or it shows the level of variability within a region.
+A choropleth map provides an easy way to visualize how a measurement varies across a geographic area or it shows the level of variability within a region. In the editor on the right you can see an example of such an interactive choropleth map created using plotly. If you run the code you will see the 2011 US Agriculture Exports by State. Make sure to hover over each state to see the export value per state in Millions USD. Let's highlight the most important pieces in the code:
 
-
-
-
-
-Let's start with a choropleth map using the states and state_values objects available in the console. The `ploy_ly()` function is already partially filled in in the script to the right. Follow the instructions to fill in the arguments appropriately.
+- The `locations` argument sets the geographic locations corresponding to each value in `z`.  `locationmode` determines the set of locations used to match entries in `locations` to regions on the map. In this case `USA-states`.
+- In `layout()` you modify the layout of a plotly visualization. With e.g. `geo` you tell plotly to only show the `usa` map (remove `geo` and you will have a map of the world). 
 
 
 *** =instructions
-The `mtcars` data frame is available in your workspace. Use `geom_point()` for your plot:
-
-- Using ggplot2, map wt onto the x aesthetic, mpg onto the y aesthetic, and cyl onto color. 
-- Use `ggplotly()` to make your plot interactive 
-
+- Based on the US Agriculture Exports choropleth map code, now create a choropleth map showing the 2014 global GDP (`world_gdp_2014`) for each country. The data is stored in `world_gdp_2014`:
 
 *** =hint
 - Thanks to plotly you can make your graph interactive with one simple function.
 
 *** =pre_exercise_code
 ```{r}
-library(plotly)
+library(choroplethr)
 library(ggplot2)
-diamonds <- diamonds[sample(nrow(diamonds), 1000), ]
+library(dplyr)
+us_ag_exports = read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
+us_ag_exports = us_ag_exports[,c(1,4)]
+
+world_gdp_2014 = read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
+world_gdp_2014 = world_gdp_2014[,2:3]
 
 ```
 
 *** =sample_code
 ```{r}
 
-# Create the ggplot2 graph
-ggplot(___, aes(x = ___, y = ___, col = ___)) +
-  geom_point()
+# US Agriculture Exports
+plot_ly(type="choropleth",locations = us_ag_exports$code, locationmode="USA-states",
+        color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% 
+  layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State") %>% colorbar(title="Millions USD")
 
-# Make your plot interactive
 
+# 2014 global GDP
+str(world_gdp_2014)
 
+# 2014 Global GDP
+plot_ly(___,___, ____,
+        color = world_gdp_2014$GDP..BILLIONS, colors = 'Blues', ___) %>% 
+  ___(___ = "2014 Global GDP") %>% ___(___ = "GDP Billions US$")
+  
 ```
 
 *** =solution
 ```{r}
 
-# Create the ggplot2 graph
-ggplot(mtcars, aes(x = wt, y = mpg, col = cyl)) +
-  geom_point()
+# US Agriculture Exports
+plot_ly(type="choropleth",locations = us_ag_exports$code, locationmode="USA-states",
+        color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% 
+  layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State") %>% colorbar(title="Millions USD")
 
-# Make your plot interactive
-ggplotly()
+
+# 2014 global GDP
+str(world_gdp_2014)
+
+# 2014 Global GDP
+plot_ly(type="choropleth",locations = world_gdp_2014$CODE, locationmode="g",
+        color = world_gdp_2014$GDP..BILLIONS, colors = 'Blues', z = world_gdp_2014$GDP..BILLIONS) %>% 
+  layout(title = "2014 Global GDP") %>% colorbar(title="GDP Billions US$")
 
 ```
 
