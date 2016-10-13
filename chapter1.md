@@ -57,10 +57,11 @@ success_msg("This was easy. Let's get some serious work done.")
 
 We'll use several datasets throughout the tutorial to showcase the power of plotly. In the next exercises we will make use of the [`diamond`](https://www.rdocumentation.org/packages/ggplot2/versions/2.1.0/topics/diamonds) dataset, a dataset containing the prices and other attributes of 1000 diamonds. 
 
-<img src="http://www.picgifs.com/glitter-gifs/d/diamonds/animaatjes-diamonds-61528.gif" alt="Diamonds" style="width:50px;height:50px;">
+<center><img src="http://www.picgifs.com/glitter-gifs/d/diamonds/animaatjes-diamonds-61528.gif" alt="Diamonds" style="width:10px;height:10px"></center>
 
+Don't forget! 
 
-Don't forget. You're encouraged to think about how the examples can be applied to your own data-sets! Also, Plotly graphs are interactive. So make sure to experiment a bit with your plot: click-drag to zoom, shift-click to pan, double-click to autoscale.
+You're encouraged to think about how the examples can be applied to your own data-sets! Also, Plotly graphs are interactive. So make sure to experiment a bit with your plot: click-drag to zoom, shift-click to pan, double-click to autoscale.
 
 *** =instructions
 - plotly has already been loaded for you. Take a look at the first command. It plots the carat (weight of the diamond) against the price (in US dollars). You don't have to change anything about this command.
