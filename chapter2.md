@@ -56,7 +56,7 @@ library(plotly)
 str(volcano)
 
 # The heatmap
-plot_ly(z = volcano, type = "heatmap")
+plot_ly(z = ~volcano, type = "heatmap")
 
 # The 3d surface map
 plot_ly(z = ~volcano, type = "surface")
@@ -155,13 +155,14 @@ Let's highlight the most important pieces in the code:
 
 *** =pre_exercise_code
 ```{r}
+library(plotly)
 library(choroplethr)
 library(ggplot2)
 library(dplyr)
-us_ag_exports = read.csv('http://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
+us_ag_exports = read.csv('http://s3.amazonaws.com/assets.datacamp.com/course/plotly/GDP_WORLD.csv')
 us_ag_exports = us_ag_exports[,c(1,4)]
 
-world_gdp_2014 = read.csv('http://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
+world_gdp_2014 = read.csv('http://s3.amazonaws.com/assets.datacamp.com/course/plotly/US_AG_EXPORTS.csv')
 world_gdp_2014 = world_gdp_2014[,2:3]
 
 ```
@@ -212,7 +213,7 @@ success_msg("This was easy. Let's get some serious work done.")
 
 For the final exercise in this course you will implement a range slider to a stock graph. 
 
-On the right you see a plotly graph to which a range slider is added using `rangeslider()`. The plot looks at a time series `USAccDeaths` that gives the monthly totals of accidental deaths in the USA. Make sure to run the code. 
+On the right you see a plotly graph to which a range slider is added using `rangeslider()`. The plot looks at a time series `USAccDeaths` that gives the monthly totals of accidental deaths in the USA. Make sure to run the code in your console. 
 
 Loaded in, you will find a data set on Apple's stock price: `apple_stock_price`. Let's now visualize this stock price over time using an interactive plotly chart. Make sure to add a range slider.  
 
