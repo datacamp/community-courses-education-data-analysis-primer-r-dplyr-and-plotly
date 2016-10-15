@@ -28,7 +28,7 @@ Let's get started by loading the `plotly` library.
 
 *** =sample_code
 ```{r}
-# load the `plotly` library
+# load the `plotly` package
 
 
 # This will create your very first plotly visualization
@@ -38,7 +38,7 @@ plot_ly(z = ~volcano)
 
 *** =solution
 ```{r}
-# load the `plotly` library
+# load the `plotly` package
 library(plotly)
 
 # This will create your very first plotly visualization
@@ -57,7 +57,7 @@ success_msg("This was easy. Let's get some serious work done.")
 
 We'll use several datasets throughout the tutorial to showcase the power of plotly. In the next exercises we will make use of the [`diamond`](https://www.rdocumentation.org/packages/ggplot2/versions/2.1.0/topics/diamonds) dataset, a dataset containing the prices and other attributes of 1000 diamonds. 
 
-<center><img src="http://www.picgifs.com/glitter-gifs/d/diamonds/animaatjes-diamonds-61528.gif" alt="Diamonds" style="width:10px;height:10px"></center>
+<center><img src="http://www.picgifs.com/glitter-gifs/d/diamonds/animaatjes-diamonds-61528.gif" alt="Diamonds" height="100px"></center>
 
 Don't forget: 
 
@@ -91,8 +91,7 @@ plot_ly(diamonds, x = ~carat, y = ~price)
 plot_ly(diamonds, x = ~carat, y = ~price, color = ~___)
         
 # Replace ___ with the correct vector
-plot_ly(diamonds, x = ~carat, y = ~price, color = ~___,
-        size = ~___)
+plot_ly(diamonds, x = ~carat, y = ~price, color = ~___, size = ~___)
 ```
 
 *** =solution
@@ -107,8 +106,7 @@ plot_ly(diamonds, x = ~carat, y = ~price)
 plot_ly(diamonds, x = ~carat, y = ~price, color = ~carat)
         
 # Replace ___ with the correct vector
-plot_ly(diamonds, x = ~carat, y = ~price, color = ~carat,
-        size = ~carat)
+plot_ly(diamonds, x = ~carat, y = ~price, color = ~carat, size = ~carat)
 ```
 
 *** =sct
