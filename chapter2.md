@@ -241,8 +241,28 @@ plot_ly(type="choropleth",locations = world_gdp_2014$CODE, locationmode="g",
 
 *** =sct
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-success_msg("This was easy. Let's get some serious work done.")
+# Test str function
+msg <-  "Call [`str()`](http://www.rdocumentation.org/packages/utils/functions/str) with the `world_gdp_2014` dataset as an argument."
+test_function("str", "object", not_called_msg = msg, incorrect_msg = msg)
+
+# Test 2014 global gdp
+test_function("plot_ly", args = c("type","locations","locationmode","color","colors","z"), 
+              not_called_msg = "Have you used `plot_ly()` 2 times for 2 different graphs?",
+              index = 1,
+              args_not_specified = c("Have you correctly specified that `type` should be `choropleth`?",
+                                "Have you correctly specified that `locations` should be `world_gdp_2014$CODE`?",
+                                "Have you correctly specified that `locationmode` should be `g`?",
+                                "Have you correctly specified that `color` should be `world_gdp_2014$GDP..BILLIONS`?",
+                                "Have you correctly specified that `colors` should be `Blues`?",
+                                "Have you correctly specified that `z` should be `world_gdp_2014$GDP..BILLIONS`?"),
+              incorrect_msg = c("Have you correctly specified that `type` should be `choropleth`?",
+                                "Have you correctly specified that `locations` should be `world_gdp_2014$CODE`?",
+                                "Have you correctly specified that `locationmode` should be `g`?",
+                                "Have you correctly specified that `color` should be `world_gdp_2014$GDP..BILLIONS`?",
+                                "Have you correctly specified that `colors` should be `Blues`?",
+                                "Have you correctly specified that `z` should be `world_gdp_2014$GDP..BILLIONS`?"))
+
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8e8d273075
@@ -319,6 +339,28 @@ plot_ly(apple_stock_price, x = ~Date) %>%
 
 *** =sct
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-success_msg("This was easy. Let's get some serious work done.")
+
+# First Plotly graph
+test_function("plot_ly", args = c("x","y"),index = 1, args_not_specified = c("Have you correctly specified that `x` should be `time(USAccDeaths)`?",
+                                "Have you correctly specified that `y` should be `USAccDeaths`?"), incorrect_msg = c("Have you correctly specified that `x` should be `time(USAccDeaths)`?","Have you correctly specified that `y` should be `USAccDeaths`?"))
+
+test_function("add_lines",index = 1)
+test_function("rangeslider",index = 1)
+
+# Test str function
+msg <-  "Call [`str()`](http://www.rdocumentation.org/packages/utils/functions/str) with the `apple_stock_price` dataset as an argument."
+test_function("str", "object", not_called_msg = msg, incorrect_msg = msg)
+
+
+# Second Plotly graph
+test_function("plot_ly", args = c("data","x"),index = 2, args_not_specified = c("Have you correctly specified that `data` should be `apple_stock_price`?",
+                                "Have you correctly specified that `x` should be `Date`?"), incorrect_msg = c("Have you correctly specified that `data` should be `apple_stock_price`?","Have you correctly specified that `x` should be `Date`?"))
+
+test_function("add_lines",args = c("y","name"), index = 2, args_not_specified = c("Have you correctly specified that `y` should be `AAPL.Adjusted`?",
+                                "Have you correctly specified that `name` should be `Apple`?"))
+
+test_function("rangeslider",index = 2)
+
+test_function("layout",args = c("title","xaxis","yaxis"), args_not_specified = c("Have you correctly specified that `title` should be `Stock Price     Apple`?","Have you correctly specified that `xaxis` should be `list(title = \"Date\")`?","Have you correctly specified that `yaxis` should be `list(title = \"Price\")`?"))
+
 ```
