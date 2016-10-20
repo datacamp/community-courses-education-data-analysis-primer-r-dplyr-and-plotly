@@ -285,6 +285,31 @@ plot_ly(diamonds, x = ~cut, y = ~price, color = ~clarity, type = "box") %>%
 
 *** =sct
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-success_msg("This was easy. Let's get some serious work done.")
+# Test first plotly function
+test_function("plot_ly", index = 1, args = c("y","type"), incorrect_msg = c("You don't have to change the [`plot_ly`](https://www.rdocumentation.org/packages/plotly/versions/4.5.2/topics/plotly) command, it was predefined for you.","You don't have to change the [`plot_ly`](https://www.rdocumentation.org/packages/plotly/versions/4.5.2/topics/plotly) command, it was predefined for you."))
+
+# Test second plotly function
+test_function("plot_ly", args = c("data","y","color","type"),
+              not_called_msg = "Have you used `plot_ly()` 3 times for 3 different graphs?",
+              index = 2,
+              args_not_specified = c("Have you correctly specified that `data` should be `diamonds`?",
+                                "Have you correctly specified that `y` should be `price`?",
+                                "Have you correctly specified that `color` should depend on `cut`?",
+                                "Make sure to let plotly know you need a plot of type box?"))
+                                
+# Test third plotly function
+test_function("plot_ly", args = c("data","x","y","color","type"),
+              not_called_msg = "Have you used `plot_ly()` 3 times for 3 different graphs?",
+              index = 3,
+              args_not_specified = c("Have you correctly specified that `data` should be `diamonds`?",
+                                "Have you correctly specified that `x` should be `cut`?",
+                                "Have you correctly specified that `y` should be `price`?",
+                                "Have you correctly specified that `color` should depend on `clarity`?",
+                                "Make sure to let plotly know you need a plot of type box?"))
+
+test_function("layout", args = c("boxmode"),
+                     incorrect_msg = paste("No need to change `layout()`!"))
+                                           
+success_msg("You really aced this chapter. Time to level up.")
+
 ```
