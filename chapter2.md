@@ -66,7 +66,36 @@ plot_ly(z = ~volcano, type = "surface")
 *** =sct
 ```{r}
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-success_msg("This was easy. Let's get some serious work done.")
+
+# Test library plotly 
+test_library_function("plotly")
+msg <- "You don't have to change the [`plot_ly`](https://www.rdocumentation.org/packages/plotly/versions/4.5.2/topics/plotly) command, it was predefined for you."
+test_function("plot_ly", args = "z", index = 1, incorrect_msg = msg)
+
+# Test str function
+msg <-  "Call [`str()`](http://www.rdocumentation.org/packages/utils/functions/str) with the `volcano` dataset as an argument."
+test_function("str", "object", not_called_msg = msg, incorrect_msg = msg)
+
+# Test heatmap
+test_function("plot_ly", args = c("z","type"),
+              not_called_msg = "Have you used `plot_ly()` 2 times for 2 different graphs?",
+              index = 1,
+              args_not_specified = c("Have you correctly specified that `z` should be `volcano`?",
+                                "Have you correctly specified that `type` should be `heatmap`?"),
+              incorrect_msg = c("Have you correctly specified that `z` should be `volcano`?",
+                                "Have you correctly specified that `type` should be `heatmap`?"))
+
+# Test 3d surface map
+test_function("plot_ly", args = c("z","type"),
+              not_called_msg = "Have you used `plot_ly()` 2 times for 2 different graphs?",
+              index = 2,
+              args_not_specified = c("Have you correctly specified that `z` should be `volcano`?",
+                                "Have you correctly specified that `type` should be `surface`?"),
+              incorrect_msg = c("Have you correctly specified that `z` should be `volcano`?",
+                                "Have you correctly specified that `type` should be `surface`?"))
+                                
+                                
+success_msg("Congratz! You created your very first heatmap and 3D surface map.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:15071c2604
@@ -128,8 +157,16 @@ ggplotly()
 
 *** =sct
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-success_msg("This was easy. Let's get some serious work done.")
+
+# Test ggplot2
+test_function("ggplot", args = "data")
+test_function("aes", args = c("x", "y", "col"), eval = c(F, F, F))
+test_function("geom_point")
+
+# Test ggplotly
+test_function("ggplotly")
+
+success_msg("You successfully turned a static ggplot2 graph into an interactive ggplot2 graph. Woot Woot!")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:dc9f2c11f7
