@@ -50,8 +50,6 @@ plot_ly(z = ~volcano)
 ```{r}
 test_library_function("plotly")
 
-test_function("plot_ly", args = "z", index = 1, incorrect_msg = "You didn't call `head()` with the correct object, `mtcars`."
-
 msg <- "You don't have to change the [`plot_ly`](https://www.rdocumentation.org/packages/plotly/versions/4.5.2/topics/plotly) command, it was predefined for you."
 test_function("plot_ly", args = "z", index = 1, incorrect_msg = msg)
 
@@ -120,7 +118,40 @@ plot_ly(diamonds, x = ~carat, y = ~price, color = ~carat, size = ~carat)
 *** =sct
 ```{r}
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-success_msg("This was easy. Let's get some serious work done.")
+
+# Test str function
+msg <-  "Call [`str()`](http://www.rdocumentation.org/packages/utils/functions/str) with the `diamonds` dataset as an argument."
+test_function("str", "object", not_called_msg = msg, incorrect_msg = msg)
+
+# Test first plotly function
+test_function("plot_ly", args = c("data","x","y"),
+              not_called_msg = "Have you used `plot_ly()` 3 times for 3 different graphs?",
+              index = 1,
+              args_not_specified = c("Have you correctly specified that `data` should be `diamonds`?",
+                                "Have you correctly specified that `x` should be `carat`?",
+                                "Have you correctly specified that `y` should be `price`?"))
+
+# Test second plotly function
+test_function("plot_ly", args = c("data","x","y","color"),
+              not_called_msg = "Have you used `plot_ly()` 3 times for 3 different graphs?",
+              index = 2,
+              args_not_specified = c("Have you correctly specified that `data` should be `diamonds`?",
+                                "Have you correctly specified that `x` should be `carat`?",
+                                "Have you correctly specified that `y` should be `price`?",
+                                "Have you correctly specified that `color` should depend on `carat`?"))
+
+# Test third plotly function
+test_function("plot_ly", args = c("data","x","y","color","size"),
+              not_called_msg = "Have you used `plot_ly()` 3 times for 3 different graphs?",
+              index = 3,
+              args_not_specified = c("Have you correctly specified that `data` should be `diamonds`?",
+                                "Have you correctly specified that `x` should be `carat`?",
+                                "Have you correctly specified that `y` should be `price`?",
+                                "Have you correctly specified that `color` should depend on `carat`?",
+                                "Have you correctly specified that `size` should depend on `carat`?"))
+                                
+success_msg("Wow. Those are some nice looking plots! You are a natural.")
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:97ba0a444c
