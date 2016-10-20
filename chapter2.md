@@ -196,11 +196,11 @@ library(plotly)
 library(choroplethr)
 library(ggplot2)
 library(dplyr)
-us_ag_exports = read.csv('http://s3.amazonaws.com/assets.datacamp.com/course/plotly/GDP_WORLD.csv')
-us_ag_exports = us_ag_exports[,c(1,4)]
+us_ag_exports = read.csv('http://s3.amazonaws.com/assets.datacamp.com/course/plotly/US_AG_EXPORTS.csv')
+us_ag_exports = us_ag_exports[,c(2,5)]
 
-world_gdp_2014 = read.csv('http://s3.amazonaws.com/assets.datacamp.com/course/plotly/US_AG_EXPORTS.csv')
-world_gdp_2014 = world_gdp_2014[,2:3]
+world_gdp_2014 = read.csv('http://s3.amazonaws.com/assets.datacamp.com/course/plotly/GDP_WORLD.csv')
+world_gdp_2014 = world_gdp_2014[,3:4]
 
 ```
 
@@ -208,7 +208,7 @@ world_gdp_2014 = world_gdp_2014[,2:3]
 ```{r}
 
 # US Agriculture Exports
-plot_ly(type="choropleth",locations = us_ag_exports$CODE, locationmode="USA-states",color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State")
+plot_ly(type="choropleth",locations = us_ag_exports$code, locationmode="USA-states",color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State")
 
 # 2014 global GDP
 str(world_gdp_2014)
@@ -224,9 +224,7 @@ plot_ly(___,___, ____,
 ```{r}
 
 # US Agriculture Exports
-plot_ly(type="choropleth",locations = us_ag_exports$CODE, locationmode="USA-states",
-        color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% 
-  layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State") 
+plot_ly(type="choropleth",locations = us_ag_exports$code, locationmode="USA-states",color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State")
 
 
 # 2014 global GDP
@@ -241,6 +239,28 @@ plot_ly(type="choropleth",locations = world_gdp_2014$CODE, locationmode="g",
 
 *** =sct
 ```{r}
+
+# Test 2014 global gdp
+test_function("plot_ly", args = c("type","locations","locationmode","color","colors","z"), 
+              not_called_msg = "Have you used `plot_ly()` 2 times for 2 different graphs?",
+              index = 2,
+              args_not_specified = c("Have you correctly specified that `type` should be `choropleth`?",
+                                "Have you correctly specified that `locations` should be `us_ag_exports$code`?",
+                                "Have you correctly specified that `locationmode` should be `USA-states`?",
+                                "Have you correctly specified that `color` should be `us_ag_exports$total.exports`?",
+                                "Have you correctly specified that `colors` should be `Reds`?",
+                                "Have you correctly specified that `z` should be `us_ag_exports$total.exports`?"),
+              incorrect_msg = c("Have you correctly specified that `type` should be `choropleth`?",
+                                "Have you correctly specified that `locations` should be `us_ag_exports$code`?",
+                                "Have you correctly specified that `locationmode` should be `USA-states`?",
+                                "Have you correctly specified that `color` should be `us_ag_exports$total.exports`?",
+                                "Have you correctly specified that `colors` should be `Reds`?",
+                                "Have you correctly specified that `z` should be `us_ag_exports$total.exports`?"))
+
+
+test_function("layout",args = c("geo","title"),index = 1)
+
+
 # Test str function
 msg <-  "Call [`str()`](http://www.rdocumentation.org/packages/utils/functions/str) with the `world_gdp_2014` dataset as an argument."
 test_function("str", "object", not_called_msg = msg, incorrect_msg = msg)
@@ -248,7 +268,7 @@ test_function("str", "object", not_called_msg = msg, incorrect_msg = msg)
 # Test 2014 global gdp
 test_function("plot_ly", args = c("type","locations","locationmode","color","colors","z"), 
               not_called_msg = "Have you used `plot_ly()` 2 times for 2 different graphs?",
-              index = 1,
+              index = 2,
               args_not_specified = c("Have you correctly specified that `type` should be `choropleth`?",
                                 "Have you correctly specified that `locations` should be `world_gdp_2014$CODE`?",
                                 "Have you correctly specified that `locationmode` should be `g`?",
@@ -262,6 +282,7 @@ test_function("plot_ly", args = c("type","locations","locationmode","color","col
                                 "Have you correctly specified that `colors` should be `Blues`?",
                                 "Have you correctly specified that `z` should be `world_gdp_2014$GDP..BILLIONS`?"))
 
+test_function("layout",args = c("title"),index = 2)
 
 ```
 
