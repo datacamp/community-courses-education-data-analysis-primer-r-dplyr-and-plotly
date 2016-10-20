@@ -205,7 +205,28 @@ plot_ly(diamonds_bucket, x = ~cut, y = ~n, type= "bar", color = ~clarity)
 *** =sct
 ```{r}
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-success_msg("This was easy. Let's get some serious work done.")
+
+# Test dplyr function
+test_error()       
+
+test_function_result("count", 
+                     incorrect_msg = paste("Have you correctly performed the count operation?",
+                                           "Make sure this is the `dplyr` verb you call on `diamonds`."))
+
+
+# Test first plotly function
+test_function("plot_ly", args = c("data","x","y","type","color"),
+              not_called_msg = "Have you used `plot_ly()` to create a bar chart?",
+              index = 1,
+              args_not_specified = c("Have you correctly specified that `data` should be `diamonds_bucket`?",
+                                "Have you correctly specified that `x` should be `cut`?",
+                                "Have you correctly specified that `y` should be `n`?",
+                                "Have you correctly specified that `type` should be `bar`?",
+                                "Have you correctly specified that `color` should be `clarity`?"
+                                ))
+                                
+success_msg("Well done. Time to move from the bar to the box...")
+
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:126082cf3d
 ## From the bar to the box: the box plot
