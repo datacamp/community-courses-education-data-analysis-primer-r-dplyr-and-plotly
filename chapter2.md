@@ -208,7 +208,7 @@ world_gdp_2014 = world_gdp_2014[,2:3]
 ```{r}
 
 # US Agriculture Exports
-plot_ly(type="choropleth",locations = us_ag_exports$code, locationmode="USA-states",color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State") %>% colorbar(title="Millions USD")
+plot_ly(type="choropleth",locations = us_ag_exports$CODE, locationmode="USA-states",color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State")
 
 # 2014 global GDP
 str(world_gdp_2014)
@@ -216,7 +216,7 @@ str(world_gdp_2014)
 # 2014 Global GDP
 plot_ly(___,___, ____,
         color = world_gdp_2014$GDP..BILLIONS, colors = 'Blues', ___) %>% 
-  ___(___ = "2014 Global GDP") %>% ___(___ = "GDP Billions US$")
+  ___(___ = "2014 Global GDP") 
   
 ```
 
@@ -224,9 +224,9 @@ plot_ly(___,___, ____,
 ```{r}
 
 # US Agriculture Exports
-plot_ly(type="choropleth",locations = us_ag_exports$code, locationmode="USA-states",
+plot_ly(type="choropleth",locations = us_ag_exports$CODE, locationmode="USA-states",
         color = us_ag_exports$total.exports, colors = 'Reds', z = us_ag_exports$total.exports) %>% 
-  layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State") %>% colorbar(title="Millions USD")
+  layout(geo = list(scope = 'usa'), title = "2011 US Agriculture Exports by State") 
 
 
 # 2014 global GDP
@@ -235,7 +235,7 @@ str(world_gdp_2014)
 # 2014 Global GDP
 plot_ly(type="choropleth",locations = world_gdp_2014$CODE, locationmode="g",
         color = world_gdp_2014$GDP..BILLIONS, colors = 'Blues', z = world_gdp_2014$GDP..BILLIONS) %>% 
-  layout(title = "2014 Global GDP") %>% colorbar(title="GDP Billions US$")
+  layout(title = "2014 Global GDP")
 
 ```
 
