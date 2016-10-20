@@ -48,8 +48,16 @@ plot_ly(z = ~volcano)
 
 *** =sct
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-success_msg("This was easy. Let's get some serious work done.")
+test_library_function("plotly")
+
+test_function("plot_ly", args = "z", index = 1, incorrect_msg = "You didn't call `head()` with the correct object, `mtcars`."
+
+msg <- "You don't have to change the [`plot_ly`](https://www.rdocumentation.org/packages/plotly/versions/4.5.2/topics/plotly) command, it was predefined for you."
+test_function("plot_ly", args = "z", index = 1, incorrect_msg = msg)
+
+test_error()
+success_msg("That was not that hard. Now it is time to create your very own plot.")
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:804e39053c
