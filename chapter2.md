@@ -69,8 +69,6 @@ plot_ly(z = ~volcano, type = "surface")
 
 # Test library plotly 
 test_library_function("plotly")
-msg <- "You don't have to change the [`plot_ly`](https://www.rdocumentation.org/packages/plotly/versions/4.5.2/topics/plotly) command, it was predefined for you."
-test_function("plot_ly", args = "z", index = 1, incorrect_msg = msg)
 
 # Test str function
 msg <-  "Call [`str()`](http://www.rdocumentation.org/packages/utils/functions/str) with the `volcano` dataset as an argument."
@@ -108,9 +106,9 @@ Try it yourself!
 Converting a ggplot2 chart to an interactive chart is fairly easy. First you create the ggplot2 graph and next you call `ggplotly()`. Like this:
 
 <pre>
-my_ggplot2 <- qplot(carat, price, data = diamonds, 
+qplot(carat, price, data = diamonds, 
                    colour = clarity)
-ggplotly(my_ggplot2)</pre>
+ggplotly()</pre>
 
 
 Not yet familiar with the ggplot2 syntax? [Consider taking this interactive tutorial](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1).
@@ -186,7 +184,7 @@ Let's highlight the most important pieces in the code:
 
 
 *** =instructions
-- Based on the US Agriculture Exports choropleth map code, create a choropleth map showing the 2014 global GDP (`world_gdp_2014`) for each country.
+- Based on the US Agriculture Exports choropleth map code, create a choropleth map showing the 2014 global GDP (`world_gdp_2014`) for each country. The column of interest is `GDP..BILLIONS`.
 - For a map of the world, the `locationmode` is `"g"`.
 
 *** =hint

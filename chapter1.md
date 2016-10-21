@@ -71,9 +71,9 @@ You're encouraged to think about how the examples can be applied to your own dat
 
 *** =instructions
 - `plotly` has already been loaded for you. 
-- Take a look at the first command. It plots the `carat` (weight of the diamond) against the `price` (in US dollars). You don't have to change anything about this command.
-- In the second call of `plot.ly()`, change the `color` argument in `aes()` (which stands for aesthetics). The color should be dependent on the weight of the diamond.
-- In the third call of `plot.ly()`, change the `size` argument in `aes()` (which stands for aesthetics). The size should be dependent on the weight of the diamond.
+- Take a look at the first `plot.ly()` graph. It plots the `carat` (weight of the diamond) against the `price` (in US dollars). You don't have to change anything to this command.
+- In the second call of `plot.ly()`, change the `color` argument. The color should be dependent on the weight of the diamond.
+- In the third call of `plot.ly()`, change the `size` argument as well. The size should be dependent on the weight of the diamond.
 
 *** =hint
 - The second argument of the second `plot.ly()` should contain argument `color` set to `carat`. 
@@ -164,9 +164,10 @@ You will work again with the `diamonds` dataset. The goal is to create a bar cha
 Exciting!
 
 *** =instructions
-- Calculate the number of diamonds for each cut/clarity combination using `count` ([`dplyr`](https://www.rdocumentation.org/packages/dplyr/versions/0.5.0)). Assign the result to `diamonds_bucket`. 
+- The `plotly` and `dplyr` package are already loaded in.
+- Calculate the number of diamonds for each cut/clarity combination using the `count()` function from the [`dplyr`]((https://www.rdocumentation.org/packages/dplyr/versions/0.5.0)) package. Assign the result to `diamonds_bucket`. 
 - Create a chart of type `"bar"`. The `color` of the bar dependents on the `clarity` of the diamond. Bucket your diamonds by the `cut` over the x-axis. 
-- `plotly` and `dplyr` are already loaded in. 
+
 
 *** =hint
 - Calculate the numbers of diamonds for each cut/clarity using `count(cut, clarity)`. (Not familiar with dplyr? Check [our course](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial)).
