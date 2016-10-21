@@ -188,7 +188,7 @@ diamonds <- diamonds[sample(nrow(diamonds), 1000), ]
 diamonds_bucket <- diamonds %>% count(___, ___)
 
 # Replace ___ with the correct vector
-plot_ly(diamonds_bucket, x = ___, y = ~n, type= ___, color = ___) 
+plot_ly(diamonds_bucket, x = ___, y = ~n, type = ___, color = ___) 
 
 ```
 
@@ -199,7 +199,7 @@ plot_ly(diamonds_bucket, x = ___, y = ~n, type= ___, color = ___)
 diamonds_bucket <- diamonds %>% count(cut, clarity)
 
 # Replace ___ with the correct vector
-plot_ly(diamonds_bucket, x = ~cut, y = ~n, type= "bar", color = ~clarity) 
+plot_ly(diamonds_bucket, x = ~cut, y = ~n, type = "bar", color = ~clarity) 
 
 ```
 
