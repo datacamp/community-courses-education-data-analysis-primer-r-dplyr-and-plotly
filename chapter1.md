@@ -87,7 +87,7 @@ diamonds <- diamonds[sample(nrow(diamonds), 1000), ]
 
 *** =sample_code
 ```{r}
-# The diamonds data set
+# The diamonds dataset
 str(diamonds)
 
 # A firs scatterplot has been made for you
@@ -102,7 +102,7 @@ plot_ly(diamonds, x = ~carat, y = ~price, color = ~___, size = ~___)
 
 *** =solution
 ```{r}
-# The diamonds data set
+# The diamonds dataset
 str(diamonds)
 
 # A firs scatterplot has been made for you
