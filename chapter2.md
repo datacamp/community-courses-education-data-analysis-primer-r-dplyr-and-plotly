@@ -17,7 +17,7 @@ Alternatively, you could visualize the data by making a 3D surface plot. Namely,
 Let's try to create that heatmap and 3D surface plot.
 
 *** =instructions
-Create two interactive plots using the volcano data set:
+Create two interactive plots using the volcano dataset:
 
 - For one the `type` of trace is a `heatmap`.
 - For the other `surface` since we also want to see a 3D representation.
@@ -293,7 +293,7 @@ For the final exercise in this course you will implement a range slider to a sto
 
 On the right you see a plotly graph to which a range slider is added using `rangeslider()`. The plot looks at a time series `USAccDeaths` that gives the monthly totals of accidental deaths in the USA. Make sure to run the code in your console. 
 
-Loaded in, you will find a data set on Apple's stock price: `apple_stock_price`. Let's now visualize this stock price over time using an interactive plotly chart. Make sure to add a range slider.  
+Loaded in, you will find a dataset on Apple's stock price: `apple_stock_price`. Let's now visualize this stock price over time using an interactive plotly chart. Make sure to add a range slider.  
 
 *** =instructions
 - Chart Apple's time-series data in R using `apple_stock_price`. Use the provided sample code.
