@@ -159,7 +159,7 @@ success_msg("Wow. Those are some nice looking plots! You are a natural.")
 
 You've likely encountered a bar chart before. With plotly you can now turn those dull, basic bar charts into interactive masterpieces!
 
-You will work again with the `diamonds` dataset. The goal is to create a bar chart that buckets our diamonds based on quality of the `cut`. Next, for each cut, you want to see how many diamonds there are for each `clarity`.  
+You will work again with the `diamonds` dataset. The goal is to create a bar chart that buckets our diamonds based on quality of the `cut`. Next, for each cut, you want to see how many diamonds there are for each `clarity` variable.  
 
 Exciting!
 
@@ -235,12 +235,12 @@ In the final exercise of this chapter, you will make an interactive box plot in 
 
 Using plotly, you can create box plots that are grouped, colored, and that display the underlying data distribution. The code to create a simple box plot using plotly is provided on your right. 
 
-Note how you use `type= "box"` in the function `plot_ly()` to create a box plot. Make sure to run the code. 
+Note how you use `type= "box"` in the function `plot_ly()` to create a box plot. Make sure to run the code (`plotly` is already loaded in). 
  
 *** =instructions
 - Create a second, more fancy, box plot using `diamonds`. The y-axis should represent the `price`. The color should depend on the `cut`.
 - Create a third box plot where you bucket the diamonds not only by `cut` but also by `clarity`. The color should depend on the `clarity` of the diamond.  
-- `plotly` is already loaded in. 
+
 
 *** =hint
 - For the third box plot the `x` argument should depend on the `cut`.

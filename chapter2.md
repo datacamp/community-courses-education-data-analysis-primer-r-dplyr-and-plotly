@@ -103,12 +103,12 @@ success_msg("Congratz! You created your very first heatmap and 3D surface map.")
 
 [`ggplot2`](https://www.rdocumentation.org/packages/ggplot2/versions/2.1.0) is probably one of the most well known graphing libraries for R. With [`ggplotly()`](https://www.rdocumentation.org/packages/plotly/versions/4.5.2/topics/ggplotly) from plotly, you can now convert your ggplot2 plots into interactive, web-based versions. See [these examples](https://plot.ly/ggplot2/) on how ggplotly does in converting different ggplot2 examples. 
 
-Let's try it yourself. 
+Try it yourself!
 
 Converting a ggplot2 chart to an interactive chart is fairly easy. First you create the ggplot2 graph and next you call `ggplotly()`. Like this:
 
 <pre>
-my_ggplot2 = qplot(carat, price, data = diamonds, 
+my_ggplot2 <- qplot(carat, price, data = diamonds, 
                    colour = clarity)
 ggplotly(my_ggplot2)</pre>
 
@@ -176,13 +176,13 @@ success_msg("You successfully turned a static ggplot2 graph into an interactive 
 
 Ever wonder how some data scientists make these beautiful geographical maps? This exercise shows you how they do it.
 
-A choropleth map provides an easy way to visualize how a measurement varies across a geographic area or it shows the level of variability within a region. An example of such a map is provided on the right. Run the code and you will see a map of the USA showing the 2011 US Agriculture Exports by State. Hover over each state to see the export value per state in Millions USD. 
+A choropleth map provides an easy way to visualize how a measurement varies across a geographic area or the level of variability within a region. An example of such a map is provided on the right. Run the code and you will see a map of the USA showing the 2011 US Agriculture Exports by State. Hover over each state to see the export value per state in Millions USD. 
 
 Let's highlight the most important pieces in the code:
 
 - The `locations` argument sets the geographic locations corresponding to each value in `z`.  
 - `locationmode` determines the set of locations used to match entries in `locations` to regions on the map. In this case `USA-states`.
-- In `layout()` you modify the layout of a plotly visualization. With e.g. `geo` you tell plotly to only show the `usa` map (remove `geo` and you will have a map of the world). 
+- In `layout()` you modify the layout of a plotly visualization. For example, with `geo` you tell plotly to only show the `usa` map (remove `geo` and you will have a map of the world). 
 
 
 *** =instructions
