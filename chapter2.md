@@ -1,6 +1,6 @@
 ---
 title       : Getting Fancy With Plotly
-description : In this chapter we will bring your plotly skills to the next level. Learn how to use plotly to create heatmaps and 3D surface plots, a choropleth map, and how to add slides. There is even a short meet and greet with ggplotly, the interactive sister of ggplot2. 
+description : In this chapter you will bring your plotly skills to the next level. Learn how to use plotly to create heatmaps and 3D surface plots, a choropleth map, and how to add slides. There is even a short meet and greet with ggplotly, the interactive sister of ggplot2. 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:7dc7c83d61
 ## Visualizing volcano data
@@ -20,7 +20,7 @@ Let's try to create that heatmap and 3D surface plot.
 Create two interactive plots using the volcano dataset:
 
 - For one the `type` of trace is a `heatmap`.
-- For the other `surface` since we also want to see a 3D representation.
+- For the other `surface` since you also want to see a 3D representation.
 
 *** =hint
 - Remember: for both plots you need to specify the z argument.
@@ -101,9 +101,11 @@ success_msg("Congratz! You created your very first heatmap and 3D surface map.")
 --- type:NormalExercise lang:r xp:100 skills:1 key:15071c2604
 ## ggplot2, the interactive dimension
 
-[`ggplot2`](https://www.rdocumentation.org/packages/ggplot2/versions/2.1.0) is probably one of the most well known graphing library's for R. With [`ggplotly()`](https://www.rdocumentation.org/packages/plotly/versions/4.5.2/topics/ggplotly) from plotly you can now convert your ggplot2 plots into interactive, web-based versions. See [these examples](https://plot.ly/ggplot2/) on how ggplotly does in converting different ggplot2 examples. 
+[`ggplot2`](https://www.rdocumentation.org/packages/ggplot2/versions/2.1.0) is probably one of the most well known graphing libraries for R. With [`ggplotly()`](https://www.rdocumentation.org/packages/plotly/versions/4.5.2/topics/ggplotly) from plotly, you can now convert your ggplot2 plots into interactive, web-based versions. See [these examples](https://plot.ly/ggplot2/) on how ggplotly does in converting different ggplot2 examples. 
 
-Let's try it yourself. Converting a ggplot2 chart to an interactive chart is fairly easy. First you create the ggplot2 graph and next you call `ggplotly()` like this:
+Let's try it yourself. 
+
+Converting a ggplot2 chart to an interactive chart is fairly easy. First you create the ggplot2 graph and next you call `ggplotly()`. Like this:
 
 <pre>
 my_ggplot2 = qplot(carat, price, data = diamonds, 
@@ -172,9 +174,9 @@ success_msg("You successfully turned a static ggplot2 graph into an interactive 
 --- type:NormalExercise lang:r xp:100 skills:1 key:dc9f2c11f7
 ## An interactive world map
 
-Ever wonder how some data scientists make these beautiful geographical maps? In this exercise we show you how they do it.
+Ever wonder how some data scientists make these beautiful geographical maps? This exercise shows you how they do it.
 
-A choropleth map provides an easy way to visualize how a measurement varies across a geographic area or it shows the level of variability within a region. We provided an example of such a map on the right. Run the code and you will see a map of the USA showing the 2011 US Agriculture Exports by State. Hover over each state to see the export value per state in Millions USD. 
+A choropleth map provides an easy way to visualize how a measurement varies across a geographic area or it shows the level of variability within a region. An example of such a map is provided on the right. Run the code and you will see a map of the USA showing the 2011 US Agriculture Exports by State. Hover over each state to see the export value per state in Millions USD. 
 
 Let's highlight the most important pieces in the code:
 

@@ -61,7 +61,7 @@ success_msg("That was not that hard. Now it is time to create your very own plot
 --- type:NormalExercise lang:r xp:100 skills:1 key:804e39053c
 ## Plotly diamonds are forever
 
-We'll use several datasets throughout the tutorial to showcase the power of plotly. In the next exercises we will make use of the [`diamond`](https://www.rdocumentation.org/packages/ggplot2/versions/2.1.0/topics/diamonds) dataset, a dataset containing the prices and other attributes of 1000 diamonds. 
+You'll use several datasets throughout the tutorial to showcase the power of plotly. In the next exercises you will make use of the [`diamond`](https://www.rdocumentation.org/packages/ggplot2/versions/2.1.0/topics/diamonds) dataset. A dataset containing the prices and other attributes of 1000 diamonds. 
 
 <center><img src="http://www.picgifs.com/glitter-gifs/d/diamonds/animaatjes-diamonds-61528.gif" alt="Diamonds" height="100px"></center>
 
@@ -72,8 +72,8 @@ You're encouraged to think about how the examples can be applied to your own dat
 *** =instructions
 - `plotly` has already been loaded for you. 
 - Take a look at the first command. It plots the `carat` (weight of the diamond) against the `price` (in US dollars). You don't have to change anything about this command.
-- In the second call of `plot.ly()` change the `color` argument in `aes()` (which stands for aesthetics). The color should be dependent on the weight of the diamond.
-- In the third call of `plot.ly()` change the `size` argument in `aes()` (which stands for aesthetics). The size should be dependent on the weight of the diamond.
+- In the second call of `plot.ly()`, change the `color` argument in `aes()` (which stands for aesthetics). The color should be dependent on the weight of the diamond.
+- In the third call of `plot.ly()`, change the `size` argument in `aes()` (which stands for aesthetics). The size should be dependent on the weight of the diamond.
 
 *** =hint
 - The second argument of the second `plot.ly()` should contain argument `color` set to `carat`. 
@@ -159,7 +159,7 @@ success_msg("Wow. Those are some nice looking plots! You are a natural.")
 
 You've likely encountered a bar chart before. With plotly you can now turn those dull, basic bar charts into interactive masterpieces!
 
-You will work again with the `diamonds` dataset. The goal is to create a bar chart that buckets our diamonds based on quality of the `cut`. Next, for each cut, we want to see how many diamonds there are for each `clarity`.  
+You will work again with the `diamonds` dataset. The goal is to create a bar chart that buckets our diamonds based on quality of the `cut`. Next, for each cut, you want to see how many diamonds there are for each `clarity`.  
 
 Exciting!
 
@@ -231,11 +231,11 @@ success_msg("Well done. Time to move from the bar to the box...")
 --- type:NormalExercise lang:r xp:100 skills:1 key:126082cf3d
 ## From the bar to the box: the box plot
 
-In the final exercise of this chapter you will make an interactive box plot in R. 
+In the final exercise of this chapter, you will make an interactive box plot in R. 
 
-Using plotly, you can create box plots that are grouped, colored, and that display the underlying data distribution. The code to create a simple box plot using plotly is provided on your right. Note how you use `type= "box"` in the function `plot_ly()` to create a box plot. 
+Using plotly, you can create box plots that are grouped, colored, and that display the underlying data distribution. The code to create a simple box plot using plotly is provided on your right. 
 
-Make sure to run the code. 
+Note how you use `type= "box"` in the function `plot_ly()` to create a box plot. Make sure to run the code. 
  
 *** =instructions
 - Create a second, more fancy, box plot using `diamonds`. The y-axis should represent the `price`. The color should depend on the `cut`.

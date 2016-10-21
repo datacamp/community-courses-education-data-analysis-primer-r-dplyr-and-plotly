@@ -1,7 +1,7 @@
 title            : The Plotly R Graphing Library
 instructors      : 
 - martijn@datacamp.com
-description      : This course will show you how you can use [plotly](plot.ly) to easily create stunning data visualizations with R. Impress your boss, co-workers and friends with interactive, high quality charts and graphs today!
+description      : This course will show you how you can use [plotly](https://plot.ly/) to easily create stunning data visualizations with R. Impress your boss, co-workers and friends with interactive, high quality charts and graphs today!
 university       : DataCamp
 difficulty_level : 2
 time_needed      : 1 hour
