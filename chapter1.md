@@ -11,7 +11,7 @@ Meet Plotly.
 
 In this short tutorial, you'll be introduced to the [R package for plotly](https://www.rdocumentation.org/packages/plotly/versions/4.5.2?), a high-level interface to the open source JavaScript graphing library plotly.js. 
 
-Plotly for R runs locally in your web browser or in the R Studio viewer. You can publish your charts to the web with [plotly's web service](https://plot.ly/r/getting-started). 
+Plotly for R runs locally in your web browser or in the R Studio viewer. You can publish your charts to the web with [plotly's web service](https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html). 
 Let's get started by loading the `plotly` library. 
 
 *** =instructions
@@ -71,12 +71,12 @@ You're encouraged to think about how the examples can be applied to your own dat
 
 *** =instructions
 - `plotly` has already been loaded for you. 
-- Take a look at the first `plot.ly()` graph. It plots the `carat` (weight of the diamond) against the `price` (in US dollars). You don't have to change anything to this command.
-- In the second call of `plot.ly()`, change the `color` argument. The color should be dependent on the weight of the diamond.
-- In the third call of `plot.ly()`, change the `size` argument as well. The size should be dependent on the weight of the diamond.
+- Take a look at the first `plot_ly()` graph. It plots the `carat` (FYI: the carat is a unit of mass. Hence it gives info on the weight of a diamond,) against the `price` (in US dollars). You don't have to change anything to this command.
+- In the second call of `plot_ly()`, change the `color` argument. The color should be dependent on the weight of the diamond.
+- In the third call of `plot_ly()`, change the `size` argument as well. The size should be dependent on the weight of the diamond.
 
 *** =hint
-- The second argument of the second `plot.ly()` should contain argument `color` set to `carat`. 
+- The second argument of the second `plot_ly()` should contain argument `color` set to `carat`. 
 
 *** =pre_exercise_code
 ```{r}
