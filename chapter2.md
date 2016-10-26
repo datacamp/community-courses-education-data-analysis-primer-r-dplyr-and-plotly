@@ -170,22 +170,26 @@ success_msg("You successfully turned a static ggplot2 graph into an interactive 
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:dc9f2c11f7
-## An interactive world map
+## An interactive airport map
 
 Ever wonder how some data scientists make these beautiful geographical maps? This exercise shows you how they do it.
 
-A choropleth map provides an easy way to visualize how a measurement varies across a geographic area or the level of variability within a region. An example of such a map is provided on the right. Run the code and you will see a map of the USA showing the 2011 US Agriculture Exports by State. Hover over each state to see the export value per state in Millions USD. 
+A map provides an easy way to visualize how a measurement varies across a geographic area or the level of variability within a region. An example of such a map is provided on the right. Run the code and you will see a map of the USA showing the most trafficked airports. Hover over each block to see the name of the airport, city, state and number of arrivals. 
 
 Let's highlight the most important pieces in the code:
 
-- The `locations` argument sets the geographic locations corresponding to each value in `z`.  
-- `locationmode` determines the set of locations used to match entries in `locations` to regions on the map. In this case `USA-states`.
-- In `layout()` you modify the layout of a plotly visualization. For example, with `geo` you tell plotly to only show the `usa` map (remove `geo` and you will have a map of the world). 
+- In `geo` you set the reference between the provided geospatial coordinates and a geographic map (e.g. `usa`)
+- To the `lat` and `lon` arguments your provide information regarding the latitude and longitude of the airports locations.
+- With `add_markers()` you can add trace(s) to a plotly visualization
+- In `layout()` you modify the layout of a plotly visualization. For example, with `title` you tell plotly what title you want to appear above your plot. 
 
 
 *** =instructions
-- Based on the US Agriculture Exports choropleth map code, create a choropleth map showing the 2014 global GDP (`world_gdp_2014`) for each country. The column of interest is `GDP..BILLIONS`.
-- For a map of the world, the `locationmode` is `"g"`.
+- Based on the code of the "Most trafficked US airports map", create a `world` map that maps all commercial airports in the world (`airports`).
+- For a map of the world, the `scope` is the `world`.
+- Each airport should be represented by a circle and on hover you should see the `AirportID`, `City` and `Country` of that aiport. The color of the circle should depend on the country. 
+
+
 
 *** =hint
 - To set the `locations` arguments use `locations = world_gdp_2014$CODE`.
@@ -193,104 +197,132 @@ Let's highlight the most important pieces in the code:
 *** =pre_exercise_code
 ```{r}
 library(plotly)
-library(choroplethr)
-library(ggplot2)
-library(dplyr)
-us_ag_exports = read.csv('http://s3.amazonaws.com/assets.datacamp.com/course/plotly/US_AG_EXPORTS.csv')
-us_ag_exports = us_ag_exports[,c(2,5)]
+library(MUCflights)
 
-world_gdp_2014 = read.csv('http://s3.amazonaws.com/assets.datacamp.com/course/plotly/GDP_WORLD.csv')
-world_gdp_2014 = world_gdp_2014[,3:4]
+airport_traffic <- read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_february_us_airport_traffic.csv')
+data(airports)
 
 ```
 
 *** =sample_code
 ```{r}
 
-# US Agriculture Exports
-plot_ly(type = "choropleth", locations = us_ag_exports$code, 
-        locationmode = "USA-states",color = us_ag_exports$total.exports, 
-        colors = 'Reds', z = us_ag_exports$total.exports) %>% 
-  layout(geo = list(scope = 'usa'), 
-         title = "2011 US Agriculture Exports by State")
+# Most Trafficked US Airports
+g <- list(
+  scope = 'usa',
+  showland = TRUE,
+  landcolor = toRGB("gray95")
+)
 
-# 2014 global GDP
-str(world_gdp_2014)
+plot_geo(airport_traffic, lat = ~lat, lon = ~long) %>%
+  add_markers(
+    text = ~paste(airport, city, state, paste("Arrivals:", cnt), sep = "<br />"),
+    color = ~cnt, symbol = I("square"), size = I(8), hoverinfo = "text"
+  ) %>%
+  colorbar(title = "Incoming flights<br />February 2011") %>%
+  layout(
+    title = 'Most trafficked US airports<br />(Hover for airport)', geo = g
+  )
 
-# 2014 Global GDP
-plot_ly(___,___, ____,
-        color = world_gdp_2014$GDP..BILLIONS, colors = 'Blues', ___) %>% 
-  ___(___ = "2014 Global GDP") 
-  
+
+# Commercial Airports WorldWide
+str(airports)
+
+# Mapping all commercial airports in the world
+g <- list(
+  scope = '___',
+  showland = TRUE,
+  landcolor = toRGB("gray95")
+)
+
+plot_geo(___, lat = ~___, lon = ~___) %>%
+  add_markers(
+    text = ~paste(___, ___, ___, sep = "<br />"),
+    color = ~___, symbol = I("___"), size = I(3), hoverinfo = "text", colors = "Set1"
+  ) %>%
+  layout(
+    title = 'Geographical information on commercial airports in the world.', geo = ___
+  )
+
 ```
 
 *** =solution
 ```{r}
 
-# US Agriculture Exports
-plot_ly(type = "choropleth",locations = us_ag_exports$code,
-        locationmode = "USA-states",color = us_ag_exports$total.exports, 
-        colors = 'Reds', z = us_ag_exports$total.exports) %>% 
-    layout(geo = list(scope = 'usa'), 
-           title = "2011 US Agriculture Exports by State")
+# Most Trafficked US Airports
+g <- list(
+  scope = 'usa',
+  showland = TRUE,
+  landcolor = toRGB("gray95")
+)
+
+plot_geo(airport_traffic, lat = ~lat, lon = ~long) %>%
+  add_markers(
+    text = ~paste(airport, city, state, paste("Arrivals:", cnt), sep = "<br />"),
+    color = ~cnt, symbol = I("square"), size = I(8), hoverinfo = "text"
+  ) %>%
+  colorbar(title = "Incoming flights<br />February 2011") %>%
+  layout(
+    title = 'Most trafficked US airports<br />(Hover for airport)', geo = g
+  )
 
 
-# 2014 global GDP
-str(world_gdp_2014)
+# Commercial Airports WorldWide
+str(airports)
 
-# 2014 Global GDP
-plot_ly(type = "choropleth",locations = world_gdp_2014$CODE, locationmode="g",
-        color = world_gdp_2014$GDP..BILLIONS, colors = 'Blues', z = world_gdp_2014$GDP..BILLIONS) %>% 
-  layout(title = "2014 Global GDP")
+# Mapping all commercial airports in the world
+g <- list(
+  scope = 'world',
+  showland = TRUE,
+  landcolor = toRGB("gray95")
+)
+
+plot_geo(airports, lat = ~Latitude, lon = ~Longitude) %>%
+  add_markers(
+    text = ~paste(AirportID, City, Country, sep = "<br />"),
+    color = ~Country, symbol = I("circle"), size = I(3), hoverinfo = "text", colors = "Set1"
+  ) %>%
+  layout(
+    title = 'Geographical information on commercial airports in the world.', geo = g
+  )
+
 
 ```
 
 *** =sct
 ```{r}
 
-# Test 2014 global gdp
-test_function("plot_ly", args = c("type","locations","locationmode","color","colors","z"), 
-              not_called_msg = "Have you used `plot_ly()` 2 times for 2 different graphs?",
-              index = 2,
-              args_not_specified = c("Have you correctly specified that `type` should be `choropleth`?",
-                                "Have you correctly specified that `locations` should be `us_ag_exports$code`?",
-                                "Have you correctly specified that `locationmode` should be `USA-states`?",
-                                "Have you correctly specified that `color` should be `us_ag_exports$total.exports`?",
-                                "Have you correctly specified that `colors` should be `Reds`?",
-                                "Have you correctly specified that `z` should be `us_ag_exports$total.exports`?"),
-              incorrect_msg = c("Have you correctly specified that `type` should be `choropleth`?",
-                                "Have you correctly specified that `locations` should be `us_ag_exports$code`?",
-                                "Have you correctly specified that `locationmode` should be `USA-states`?",
-                                "Have you correctly specified that `color` should be `us_ag_exports$total.exports`?",
-                                "Have you correctly specified that `colors` should be `Reds`?",
-                                "Have you correctly specified that `z` should be `us_ag_exports$total.exports`?"))
+# Test most trafficked airports
+test_function("plot_geo", args = c("data","lat","lon"), 
+              not_called_msg = "Have you used `plot_geo()` 2 times for 2 different graphs?",
+              index = 1,
+              args_not_specified = c("Have you correctly specified that `data` should be `airport_traffic`?",
+                                "Have you correctly specified that `lat` should be `lat`?",
+                                "Have you correctly specified that `lon` should be `long-states`?"),
+              incorrect_msg = c("Have you correctly specified that `data` should be `airport_traffic`?",
+                                "Have you correctly specified that `lat` should be `lat`?",
+                                "Have you correctly specified that `lon` should be `long-states`?"))
 
-
+test_function("add_markers",args = c("text","color","symbol","size","hoverinfo","colors"),index = 1)
 test_function("layout",args = c("geo","title"),index = 1)
 
+# Test all commercial airports
+test_function("plot_geo", args = c("data","lat","lon"), 
+              not_called_msg = "Have you used `plot_geo()` 2 times for 2 different graphs?",
+              index = 2,
+              args_not_specified = c("Have you correctly specified that `data` should be `airports`?",
+                                "Have you correctly specified that `lat` should be `lat`?",
+                                "Have you correctly specified that `lon` should be `long-states`?"),
+              incorrect_msg = c("Have you correctly specified that `data` should be `airport_traffic`?",
+                                "Have you correctly specified that `lat` should be `lat`?",
+                                "Have you correctly specified that `lon` should be `long-states`?"))
+
+test_function("add_markers",args = c("text","color","symbol","size","hoverinfo","colors"),index = 2)
+test_function("layout",args = c("geo","title"),index = 2)
 
 # Test str function
-msg <-  "Call [`str()`](http://www.rdocumentation.org/packages/utils/functions/str) with the `world_gdp_2014` dataset as an argument."
+msg <-  "Call [`str()`](http://www.rdocumentation.org/packages/utils/functions/str) with the `airports` dataset as an argument."
 test_function("str", "object", not_called_msg = msg, incorrect_msg = msg)
-
-# Test 2014 global gdp
-test_function("plot_ly", args = c("type","locations","locationmode","color","colors","z"), 
-              not_called_msg = "Have you used `plot_ly()` 2 times for 2 different graphs?",
-              index = 2,
-              args_not_specified = c("Have you correctly specified that `type` should be `choropleth`?",
-                                "Have you correctly specified that `locations` should be `world_gdp_2014$CODE`?",
-                                "Have you correctly specified that `locationmode` should be `g`?",
-                                "Have you correctly specified that `color` should be `world_gdp_2014$GDP..BILLIONS`?",
-                                "Have you correctly specified that `colors` should be `Blues`?",
-                                "Have you correctly specified that `z` should be `world_gdp_2014$GDP..BILLIONS`?"),
-              incorrect_msg = c("Have you correctly specified that `type` should be `choropleth`?",
-                                "Have you correctly specified that `locations` should be `world_gdp_2014$CODE`?",
-                                "Have you correctly specified that `locationmode` should be `g`?",
-                                "Have you correctly specified that `color` should be `world_gdp_2014$GDP..BILLIONS`?",
-                                "Have you correctly specified that `colors` should be `Blues`?",
-                                "Have you correctly specified that `z` should be `world_gdp_2014$GDP..BILLIONS`?"))
-
-test_function("layout",args = c("title"),index = 2)
 
 ```
 
