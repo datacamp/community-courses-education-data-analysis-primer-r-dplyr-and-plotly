@@ -199,7 +199,7 @@ Let's highlight the most important pieces in the code:
 library(plotly)
 library(MUCflights)
 
-airport_traffic <- read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_february_us_airport_traffic.csv')
+airport_traffic <- read.csv('http://raw.githubusercontent.com/plotly/datasets/master/2011_february_us_airport_traffic.csv')
 data(airports)
 
 ```
