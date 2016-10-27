@@ -199,7 +199,9 @@ Let's highlight the most important pieces in the code:
 library(plotly)
 library(MUCflights)
 
-airport_traffic <- read.csv('http://raw.githubusercontent.com/plotly/datasets/master/2011_february_us_airport_traffic.csv')
+
+airport_traffic <-read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_1959/datasets/2011_february_us_airport_traffic.csv")
+
 data(airports)
 
 ```
@@ -303,7 +305,7 @@ test_function("plot_geo", args = c("data","lat","lon"),
                                 "Have you correctly specified that `lat` should be `lat`?",
                                 "Have you correctly specified that `lon` should be `long-states`?"))
 
-test_function("add_markers",args = c("text","color","symbol","size","hoverinfo","colors"),index = 1)
+test_function("add_markers",args = c("text","color","symbol","size","hoverinfo"),index = 1)
 test_function("layout",args = c("geo","title"),index = 1)
 
 # Test all commercial airports
