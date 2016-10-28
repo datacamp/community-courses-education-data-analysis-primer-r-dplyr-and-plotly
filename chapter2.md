@@ -245,7 +245,7 @@ plot_geo(___, lat = ~___, lon = ~___) %>%
     color = ~___, symbol = I("___"), size = I(3), hoverinfo = "text", colors = "Set1"
   ) %>%
   layout(
-    title = 'Geographical information on commercial airports in the world.', geo = ___
+    title = 'Commercial Airports Worldwide', geo = ___
   )
 
 ```
@@ -287,7 +287,7 @@ plot_geo(airports, lat = ~Latitude, lon = ~Longitude) %>%
     color = ~Country, symbol = I("circle"), size = I(3), hoverinfo = "text", colors = "Set1"
   ) %>%
   layout(
-    title = 'Geographical information on commercial airports in the world.', geo = g
+    title = 'Commercial Airports Worldwide', geo = g
   )
 
 
