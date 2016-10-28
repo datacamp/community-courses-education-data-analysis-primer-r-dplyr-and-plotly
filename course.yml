@@ -4,7 +4,7 @@ instructors      :
 collaborators    : 
 - plotly@datacamp.com
 - jake@datacamp.com
-description      : This Plotly Tutorial will show you how you can use <a href="https://plot.ly/">plotly</a> to easily create stunning data visualizations with R. Impress your boss, co-workers and friends with interactive, high quality charts and graphs today!
+description      : This Plotly tutorial will show you how you can use <a href="https://plot.ly/">plotly</a> to easily create stunning data visualizations with R. Impress your boss, co-workers and friends with interactive, high quality charts and graphs today!
 university       : DataCamp
 difficulty_level : 2
 time_needed      : 1 hour
