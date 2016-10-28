@@ -71,7 +71,7 @@ You're encouraged to think about how the examples can be applied to your own dat
 
 *** =instructions
 - `plotly` has already been loaded for you. 
-- Take a look at the first `plot_ly()` graph. It plots the `carat` (FYI: the carat is a unit of mass. Hence it gives info on the weight of a diamond,) against the `price` (in US dollars). You don't have to change anything to this command.
+- Take a look at the first `plot_ly()` graph. It plots the `carat` (FYI: the carat is a unit of mass. Hence it gives info on the weight of a diamond,) against the `price` (in US dollars). You don't have to change anything to this command. Tip: note the `~` syntax. 
 - In the second call of `plot_ly()`, change the `color` argument. The color should be dependent on the weight of the diamond.
 - In the third call of `plot_ly()`, change the `size` argument as well. The size should be dependent on the weight of the diamond.
 
@@ -166,7 +166,7 @@ Exciting!
 *** =instructions
 - The `plotly` and `dplyr` package are already loaded in.
 - Calculate the number of diamonds for each cut/clarity combination using the `count()` function from the [`dplyr`]((https://www.rdocumentation.org/packages/dplyr/versions/0.5.0)) package. Assign the result to `diamonds_bucket`. 
-- Create a chart of type `"bar"`. The `color` of the bar dependents on the `clarity` of the diamond. Bucket your diamonds by the `cut` over the x-axis. 
+- Create a chart of type `"bar"`. The `color` of the bar depends on the `clarity` of the diamond. Bucket your diamonds by the `cut` over the x-axis. 
 
 
 *** =hint

@@ -174,25 +174,27 @@ success_msg("You successfully turned a static ggplot2 graph into an interactive 
 
 Ever wonder how some data scientists make these beautiful geographical maps? This exercise shows you how they do it.
 
-A map provides an easy way to visualize how a measurement varies across a geographic area or the level of variability within a region. An example of such a map is provided on the right. Run the code and you will see a map of the USA showing the most trafficked airports. Hover over each block to see the name of the airport, city, state and number of arrivals. 
+A map provides an easy way to visualize how a measurement varies across a geographic area or the level of variability within a region. An example of such a map is provided on the right. Run the first part of the code and you will see a map of the USA showing the most trafficked airports. Hover over each block to see the name of the airport, city, state and number of arrivals. 
 
 Let's highlight the most important pieces in the code:
 
-- In `geo` you set the reference between the provided geospatial coordinates and a geographic map (e.g. `usa`)
+
 - To the `lat` and `lon` arguments your provide information regarding the latitude and longitude of the airports locations.
 - With `add_markers()` you can add trace(s) to a plotly visualization
-- In `layout()` you modify the layout of a plotly visualization. For example, with `title` you tell plotly what title you want to appear above your plot. 
+- In `geo` you set the reference between the provided geospatial coordinates and a geographic map (e.g. `usa`)
+- In `layout()` you modify the layout of a plotly visualization. For example, with `title` you tell plotly what title you want to appear above your plot.
 
 
 *** =instructions
 - Based on the code of the "Most trafficked US airports map", create a `world` map that maps all commercial airports in the world (`airports`).
 - For a map of the world, the `scope` is the `world`.
-- Each airport should be represented by a circle and on hover you should see the `AirportID`, `City` and `Country` of that aiport. The color of the circle should depend on the country. 
+- Each airport should be represented by a circle and on hover you should see the `AirportID`, `City` and `Country` of that aiport. 
+- The color of the airport circle should depend on the country. 
 
 
 
 *** =hint
-- To set the `locations` arguments use `locations = world_gdp_2014$CODE`.
+- To set the `scope` argument use `scope = 'world'`.
 
 *** =pre_exercise_code
 ```{r}
