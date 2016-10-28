@@ -1,5 +1,7 @@
 title            : "Plotly Tutorial: Plotly and R"
 author_field: The DataCamp Team
+instructors:
+  - info@datacamp.com
 description      : This Plotly tutorial will show you how you can use <a href="https://plot.ly/">plotly</a> to easily create stunning data visualizations with R. Impress your boss, co-workers and friends with interactive, high quality charts and graphs today!
 university       : DataCamp
 difficulty_level : 2
